@@ -6,6 +6,8 @@ resin-config-json
 [![Build Status](https://travis-ci.org/resin-io/resin-config-json.svg?branch=master)](https://travis-ci.org/resin-io/resin-config-json)
 [![Build status](https://ci.appveyor.com/api/projects/status/ndm6cfnvotbsyaqx/branch/master?svg=true)](https://ci.appveyor.com/project/resin-io/resin-config-json/branch/master)
 
+Join our online chat at [![Gitter chat](https://badges.gitter.im/resin-io/chat.png)](https://gitter.im/resin-io/chat)
+
 Resin.io config.json manipulation utilities.
 
 Role
