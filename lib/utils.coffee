@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ###
 
-resin = require('resin-sdk')
+resin = require('resin-sdk-preconfigured')
 
 ###*
 # @summary Get config partition information
