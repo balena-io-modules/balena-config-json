@@ -16,7 +16,7 @@ limitations under the License.
  */
 var resin;
 
-resin = require('resin-sdk');
+resin = require('resin-sdk-preconfigured');
 
 
 /**

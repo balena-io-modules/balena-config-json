@@ -1,6 +1,6 @@
 m = require('mochainon')
 Promise = require('bluebird')
-resin = require('resin-sdk')
+resin = require('resin-sdk-preconfigured')
 utils = require('../lib/utils')
 
 describe 'Utils:', ->

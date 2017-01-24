@@ -40,7 +40,7 @@
   "dependencies": {
     "bluebird": "^3.0.5",
     "resin-image-fs": "^2.1.1",
-    "resin-sdk": "^4.0.0",
+    "resin-sdk-preconfigured": "^0.1.0",
     "rindle": "^1.0.0",
     "string-to-stream": "^1.0.1"
   }
