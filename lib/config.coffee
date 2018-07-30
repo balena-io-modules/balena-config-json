@@ -18,9 +18,8 @@ limitations under the License.
 # @module config
 ###
 
+Promise = require('bluebird')
 imagefs = require('resin-image-fs')
-rindle = require('rindle')
-stringToStream = require('string-to-stream')
 utils = require('./utils')
 
 ###*
@@ -39,12 +38,12 @@ utils = require('./utils')
 # 	console.log(config)
 ###
 exports.read = (image, type) ->
-	return utils.getConfigPartitionInformationByType(type).then (configuration) ->
-		return imagefs.read
+	return utils.getConfigPartitionInformationByType(type)
+	.then (configuration) ->
+		imagefs.readFile
 			image: image
 			partition: configuration.partition
 			path: configuration.path
-	.then(rindle.extract)
 	.then(JSON.parse)
 
 ###*
@@ -66,10 +65,10 @@ exports.read = (image, type) ->
 ###
 exports.write = (image, type, config) ->
 	config = JSON.stringify(config)
-	return utils.getConfigPartitionInformationByType(type).then (configuration) ->
-		return imagefs.write
+	return utils.getConfigPartitionInformationByType(type)
+	.then (configuration) ->
+		return imagefs.writeFile
 			image: image
 			partition: configuration.partition
 			path: configuration.path
-		, stringToStream(config)
-	.then(rindle.wait)
+		, config

@@ -14,7 +14,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
  */
-var resin;
+var convertFilePathDefinition, resin, _;
+
+_ = require('lodash');
 
 resin = require('resin-sdk-preconfigured');
 
@@ -41,6 +43,18 @@ exports.getConfigPartitionInformationByType = function(type) {
     if (config == null) {
       throw new Error("Unsupported device type: " + type);
     }
-    return config;
+    return convertFilePathDefinition(config);
   });
+};
+
+convertFilePathDefinition = function(config) {
+  config = _.cloneDeep(config);
+  if (_.isObject(config.partition)) {
+    if (config.partition.logical != null) {
+      config.partition = config.partition.logical + 4;
+    } else if (config.partition.primary != null) {
+      config.partition = config.partition.primary;
+    }
+  }
+  return config;
 };

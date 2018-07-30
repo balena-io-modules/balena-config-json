@@ -25,9 +25,7 @@ describe 'Utils:', ->
 			it 'should eventually become the configuration information', ->
 				promise = utils.getConfigPartitionInformationByType('raspberry-pi')
 				m.chai.expect(promise).to.eventually.become
-					partition:
-						primary: 4
-						logical: 1
+					partition: 5
 					path: '/config.json'
 
 		describe 'given an edison manifest', ->

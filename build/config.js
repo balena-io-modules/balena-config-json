@@ -18,13 +18,11 @@ limitations under the License.
 /**
  * @module config
  */
-var imagefs, rindle, stringToStream, utils;
+var Promise, imagefs, utils;
+
+Promise = require('bluebird');
 
 imagefs = require('resin-image-fs');
-
-rindle = require('rindle');
-
-stringToStream = require('string-to-stream');
 
 utils = require('./utils');
 
@@ -47,12 +45,12 @@ utils = require('./utils');
 
 exports.read = function(image, type) {
   return utils.getConfigPartitionInformationByType(type).then(function(configuration) {
-    return imagefs.read({
+    return imagefs.readFile({
       image: image,
       partition: configuration.partition,
       path: configuration.path
     });
-  }).then(rindle.extract).then(JSON.parse);
+  }).then(JSON.parse);
 };
 
 
@@ -77,10 +75,10 @@ exports.read = function(image, type) {
 exports.write = function(image, type, config) {
   config = JSON.stringify(config);
   return utils.getConfigPartitionInformationByType(type).then(function(configuration) {
-    return imagefs.write({
+    return imagefs.writeFile({
       image: image,
       partition: configuration.partition,
       path: configuration.path
-    }, stringToStream(config));
-  }).then(rindle.wait);
+    }, config);
+  });
 };

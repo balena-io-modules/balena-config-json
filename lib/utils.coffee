@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ###
 
+_ = require('lodash')
 resin = require('resin-sdk-preconfigured')
 
 ###*
@@ -37,4 +38,19 @@ exports.getConfigPartitionInformationByType = (type) ->
 		if not config?
 			throw new Error("Unsupported device type: #{type}")
 
-		return config
+		return convertFilePathDefinition(config)
+
+# Transform old config format ({ logical/primary: N }) into new single-number format
+convertFilePathDefinition = (config) ->
+	config = _.cloneDeep(config)
+
+	if _.isObject(config.partition)
+		# Partition numbering is now numerical, following the linux
+		# conventions in 5.95 of the TLDP's system admin guide:
+		# http://www.tldp.org/LDP/sag/html/partitions.html#DEV-FILES-PARTS
+		if config.partition.logical?
+			config.partition = config.partition.logical + 4
+		else if config.partition.primary?
+			config.partition = config.partition.primary
+
+	return config
