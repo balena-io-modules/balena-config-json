@@ -60,6 +60,25 @@ describe 'Utils:', ->
 				promise = utils.getConfigPartitionInformationByType('foobar')
 				m.chai.expect(promise).to.be.rejectedWith('Unsupported device type: foobar')
 
+		describe 'given a device type manifest with a new format partition identifier', ->
+
+			beforeEach ->
+				@getManifestBySlugStub = m.sinon.stub(resin.models.device, 'getManifestBySlug')
+				@getManifestBySlugStub.withArgs('raspberry-pi').returns Promise.resolve
+					configuration:
+						config:
+							partition: 5
+							path: '/config.json'
+
+			afterEach ->
+				@getManifestBySlugStub.restore()
+
+			it 'should eventually become the configuration information', ->
+				promise = utils.getConfigPartitionInformationByType('raspberry-pi')
+				m.chai.expect(promise).to.eventually.become
+					partition: 5
+					path: '/config.json'
+
 		describe 'given a device type manifest without a configuration.config property', ->
 
 			beforeEach ->
