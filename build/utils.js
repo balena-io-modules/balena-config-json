@@ -1,6 +1,6 @@
 
 /*
-Copyright 2016 Resin.io
+Copyright 2016 Balena
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,11 +14,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
  */
-var convertFilePathDefinition, resin, _;
+var balena, convertFilePathDefinition, _;
 
 _ = require('lodash');
 
-resin = require('resin-sdk-preconfigured');
+balena = require('balena-sdk').fromSharedOptions();
 
 
 /**
@@ -37,11 +37,11 @@ resin = require('resin-sdk-preconfigured');
  */
 
 exports.getConfigPartitionInformationByType = function(type) {
-  return resin.models.device.getManifestBySlug(type).then(function(manifest) {
+  return balena.models.device.getManifestBySlug(type).then(function(manifest) {
     var config, _ref;
     config = (_ref = manifest.configuration) != null ? _ref.config : void 0;
     if (config == null) {
-      throw new Error("Unsupported device type: " + type);
+      throw new balena.errors.BalenaInvalidDeviceType(type);
     }
     return convertFilePathDefinition(config);
   });

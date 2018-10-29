@@ -35,12 +35,13 @@
     "jsdoc-to-markdown": "^1.1.1",
     "mocha": "~2.0.1",
     "mochainon": "^1.0.0",
+    "mockery": "^2.1.0",
     "wary": "^1.0.0"
   },
   "dependencies": {
+    "balena-sdk": "v11.0.0",
     "bluebird": "^3.0.5",
     "lodash": "^4.17.10",
-    "resin-image-fs": "^5.0.4",
-    "resin-sdk-preconfigured": "^0.1.0"
+    "resin-image-fs": "^5.0.4"
   }
 }
