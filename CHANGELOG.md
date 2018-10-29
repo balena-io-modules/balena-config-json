@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+## v2.0.1 - 2018-10-29
+
+* Rename the package itself to balena-config-json [Tim Perry]
+
 ## v2.0.0 - 2018-10-29
 
 * Rename everything 'resin' to 'balena' [Tim Perry]
