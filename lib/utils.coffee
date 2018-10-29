@@ -1,5 +1,5 @@
 ###
-Copyright 2016 Resin.io
+Copyright 2016 Balena
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@ limitations under the License.
 ###
 
 _ = require('lodash')
-resin = require('resin-sdk-preconfigured')
+balena = require('balena-sdk').fromSharedOptions()
 
 ###*
 # @summary Get config partition information
@@ -32,11 +32,11 @@ resin = require('resin-sdk-preconfigured')
 # 	console.log(configuration.path)
 ###
 exports.getConfigPartitionInformationByType = (type) ->
-	return resin.models.device.getManifestBySlug(type).then (manifest) ->
+	return balena.models.device.getManifestBySlug(type).then (manifest) ->
 		config = manifest.configuration?.config
 
 		if not config?
-			throw new Error("Unsupported device type: #{type}")
+			throw new balena.errors.BalenaInvalidDeviceType(type)
 
 		return convertFilePathDefinition(config)
 

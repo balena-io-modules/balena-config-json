@@ -1,6 +1,11 @@
 m = require('mochainon')
 Promise = require('bluebird')
-resin = require('resin-sdk-preconfigured')
+mockery = require('mockery')
+balena = require('balena-sdk').fromSharedOptions()
+
+mockery.enable({ warnOnReplace: false, warnOnUnregistered: false })
+mockery.registerMock('balena-sdk', { fromSharedOptions: -> balena })
+
 utils = require('../lib/utils')
 
 describe 'Utils:', ->
@@ -10,7 +15,7 @@ describe 'Utils:', ->
 		describe 'given a raspberry-pi manifest', ->
 
 			beforeEach ->
-				@getManifestBySlugStub = m.sinon.stub(resin.models.device, 'getManifestBySlug')
+				@getManifestBySlugStub = m.sinon.stub(balena.models.device, 'getManifestBySlug')
 				@getManifestBySlugStub.withArgs('raspberry-pi').returns Promise.resolve
 					configuration:
 						config:
@@ -31,7 +36,7 @@ describe 'Utils:', ->
 		describe 'given an edison manifest', ->
 
 			beforeEach ->
-				@getManifestBySlugStub = m.sinon.stub(resin.models.device, 'getManifestBySlug')
+				@getManifestBySlugStub = m.sinon.stub(balena.models.device, 'getManifestBySlug')
 				@getManifestBySlugStub.withArgs('edison').returns Promise.resolve
 					configuration:
 						config:
@@ -50,7 +55,7 @@ describe 'Utils:', ->
 		describe 'given a device type manifest without a configuration property', ->
 
 			beforeEach ->
-				@getManifestBySlugStub = m.sinon.stub(resin.models.device, 'getManifestBySlug')
+				@getManifestBySlugStub = m.sinon.stub(balena.models.device, 'getManifestBySlug')
 				@getManifestBySlugStub.returns(Promise.resolve({}))
 
 			afterEach ->
@@ -58,12 +63,12 @@ describe 'Utils:', ->
 
 			it 'should be rejected with an error', ->
 				promise = utils.getConfigPartitionInformationByType('foobar')
-				m.chai.expect(promise).to.be.rejectedWith('Unsupported device type: foobar')
+				m.chai.expect(promise).to.be.rejectedWith('Invalid device type: foobar')
 
 		describe 'given a device type manifest with a new format partition identifier', ->
 
 			beforeEach ->
-				@getManifestBySlugStub = m.sinon.stub(resin.models.device, 'getManifestBySlug')
+				@getManifestBySlugStub = m.sinon.stub(balena.models.device, 'getManifestBySlug')
 				@getManifestBySlugStub.withArgs('raspberry-pi').returns Promise.resolve
 					configuration:
 						config:
@@ -82,7 +87,7 @@ describe 'Utils:', ->
 		describe 'given a device type manifest without a configuration.config property', ->
 
 			beforeEach ->
-				@getManifestBySlugStub = m.sinon.stub(resin.models.device, 'getManifestBySlug')
+				@getManifestBySlugStub = m.sinon.stub(balena.models.device, 'getManifestBySlug')
 				@getManifestBySlugStub.returns(Promise.resolve(configuration: {}))
 
 			afterEach ->
@@ -90,4 +95,4 @@ describe 'Utils:', ->
 
 			it 'should be rejected with an error', ->
 				promise = utils.getConfigPartitionInformationByType('foobar')
-				m.chai.expect(promise).to.be.rejectedWith('Unsupported device type: foobar')
+				m.chai.expect(promise).to.be.rejectedWith('Invalid device type: foobar')
