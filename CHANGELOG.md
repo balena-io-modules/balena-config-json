@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+## v2.0.0 - 2018-10-29
+
+* Rename everything 'resin' to 'balena' [Tim Perry]
+
 - Update resin-image-fs, fixing issues with TX2 images
 
 ## [1.0.2] - 2017-01-24

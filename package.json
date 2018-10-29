@@ -1,6 +1,6 @@
 {
   "name": "resin-config-json",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Resin.io config.json manipulation utilities",
   "main": "build/config.js",
   "homepage": "https://github.com/resin-io/resin-config-json",
