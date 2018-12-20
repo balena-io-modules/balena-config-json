@@ -3,10 +3,10 @@
   "version": "2.0.1",
   "description": "Balena config.json manipulation utilities",
   "main": "build/config.js",
-  "homepage": "https://github.com/balena-io/balena-config-json",
+  "homepage": "https://github.com/balena-io-modules/resin-config-json",
   "repository": {
     "type": "git",
-    "url": "git://github.com/resin-io/balena-config-json.git"
+    "url": "git://github.com/balena-io-modules/resin-config-json"
   },
   "keywords": [
     "balena",
