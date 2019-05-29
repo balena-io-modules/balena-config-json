@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+## 2.0.2 - 2019-05-29
+
+* CI: Update CI setup for travis and remove appveyor (not seem to be in use) [Gergely Imreh]
+* Add changes to generated files too [Gergely Imreh]
+* Dependencies: update to build with Node 12 [Gergely Imreh]
+
 ## v2.0.1 - 2018-10-29
 
 * Rename the package itself to balena-config-json [Tim Perry]
