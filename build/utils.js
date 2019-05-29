@@ -1,4 +1,3 @@
-
 /*
 Copyright 2016 Balena
 
@@ -13,13 +12,12 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
- */
-var balena, convertFilePathDefinition, _;
+*/
+var _, balena, convertFilePathDefinition;
 
 _ = require('lodash');
 
 balena = require('balena-sdk').fromSharedOptions();
-
 
 /**
  * @summary Get config partition information
@@ -35,11 +33,10 @@ balena = require('balena-sdk').fromSharedOptions();
  * 	console.log(configuration.partition)
  * 	console.log(configuration.path)
  */
-
 exports.getConfigPartitionInformationByType = function(type) {
   return balena.models.device.getManifestBySlug(type).then(function(manifest) {
-    var config, _ref;
-    config = (_ref = manifest.configuration) != null ? _ref.config : void 0;
+    var config, ref;
+    config = (ref = manifest.configuration) != null ? ref.config : void 0;
     if (config == null) {
       throw new balena.errors.BalenaInvalidDeviceType(type);
     }
@@ -47,9 +44,13 @@ exports.getConfigPartitionInformationByType = function(type) {
   });
 };
 
+// Transform old config format ({ logical/primary: N }) into new single-number format
 convertFilePathDefinition = function(config) {
   config = _.cloneDeep(config);
   if (_.isObject(config.partition)) {
+    // Partition numbering is now numerical, following the linux
+    // conventions in 5.95 of the TLDP's system admin guide:
+    // http://www.tldp.org/LDP/sag/html/partitions.html#DEV-FILES-PARTS
     if (config.partition.logical != null) {
       config.partition = config.partition.logical + 4;
     } else if (config.partition.primary != null) {

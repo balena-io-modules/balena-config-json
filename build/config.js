@@ -1,4 +1,3 @@
-
 /*
 Copyright 2016 Balena
 
@@ -13,11 +12,10 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
- */
-
-/**
- * @module config
- */
+*/
+   /**
+    * @module config
+    */
 var Promise, imagefs, utils;
 
 Promise = require('bluebird');
@@ -25,7 +23,6 @@ Promise = require('bluebird');
 imagefs = require('resin-image-fs');
 
 utils = require('./utils');
-
 
 /**
  * @summary Read a config.json from an image
@@ -42,7 +39,6 @@ utils = require('./utils');
  * config.read('/dev/disk2', 'raspberry-pi').then (config) ->
  * 	console.log(config)
  */
-
 exports.read = function(image, type) {
   return utils.getConfigPartitionInformationByType(type).then(function(configuration) {
     return imagefs.readFile({
@@ -52,7 +48,6 @@ exports.read = function(image, type) {
     });
   }).then(JSON.parse);
 };
-
 
 /**
  * @summary Write a config.json to an image
@@ -71,7 +66,6 @@ exports.read = function(image, type) {
  * .then ->
  * 	console.log('Done!')
  */
-
 exports.write = function(image, type, config) {
   config = JSON.stringify(config);
   return utils.getConfigPartitionInformationByType(type).then(function(configuration) {
