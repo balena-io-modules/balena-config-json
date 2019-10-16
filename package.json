@@ -8,6 +8,9 @@
     "type": "git",
     "url": "git://github.com/resin-io/balena-config-json.git"
   },
+  "files": [
+    "build/"
+  ],
   "keywords": [
     "balena",
     "config",
@@ -19,8 +22,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "gulp test && coffee tests/e2e.coffee",
-    "prepublish": "gulp build",
+    "build": "gulp build && npm run readme",
+    "test": "npm run build && gulp test && coffee tests/e2e.coffee",
+    "prepack": "npm run build",
     "readme": "jsdoc2md --template doc/README.hbs build/config.js > README.md"
   },
   "author": "Juan Cruz Viotti <juan@balena.io>",
@@ -38,7 +42,7 @@
     "wary": "^1.0.0"
   },
   "dependencies": {
-    "balena-sdk": "v11.0.0",
+    "balena-sdk": "^12.15.0",
     "bluebird": "^3.0.5",
     "lodash": "^4.17.10",
     "resin-image-fs": "^5.0.8"
