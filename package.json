@@ -8,6 +8,9 @@
     "type": "git",
     "url": "git://github.com/resin-io/balena-config-json.git"
   },
+  "files": [
+    "build/"
+  ],
   "keywords": [
     "balena",
     "config",
