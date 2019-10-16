@@ -5,6 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+## 2.1.0 - 2019-10-16
+
+* Add support for private device types [Thodoris Greasidis]
+* Only publish the build & the standard module files [Thodoris Greasidis]
+* Remove the build output from the git repo [Thodoris Greasidis]
+* Add a prepack step to be balenaCI compliant [Thodoris Greasidis]
+* Update the README for the balena rename [Thodoris Greasidis]
+
 ## 2.0.2 - 2019-05-29
 
 * CI: Update CI setup for travis and remove appveyor (not seem to be in use) [Gergely Imreh]
