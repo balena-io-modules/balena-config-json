@@ -19,8 +19,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "gulp test && coffee tests/e2e.coffee",
-    "prepublish": "gulp build",
+    "build": "gulp build && npm run readme",
+    "test": "npm run build && gulp test && coffee tests/e2e.coffee",
+    "prepack": "npm run build",
     "readme": "jsdoc2md --template doc/README.hbs build/config.js > README.md"
   },
   "author": "Juan Cruz Viotti <juan@balena.io>",
