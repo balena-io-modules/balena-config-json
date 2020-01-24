@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+## 2.1.1 - 2020-01-24
+
+* Update dependencies and repo links [Pagan Gazzard]
+
 ## 2.1.0 - 2019-10-16
 
 * Add support for private device types [Thodoris Greasidis]
