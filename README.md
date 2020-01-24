@@ -2,9 +2,9 @@ balena-config-json
 -----------------
 
 [![npm version](https://badge.fury.io/js/balena-config-json.svg)](http://badge.fury.io/js/balena-config-json)
-[![dependencies](https://david-dm.org/balena-io/balena-config-json.png)](https://david-dm.org/balena-io/balena-config-json.png)
-[![Build Status](https://travis-ci.org/balena-io/balena-config-json.svg?branch=master)](https://travis-ci.org/balena-io/balena-config-json)
-[![Build status](https://ci.appveyor.com/api/projects/status/ndm6cfnvotbsyaqx/branch/master?svg=true)](https://ci.appveyor.com/project/balena-io/balena-config-json/branch/master)
+[![dependencies](https://david-dm.org/balena-io-modules/balena-config-json.png)](https://david-dm.org/balena-io-modules/balena-config-json.png)
+[![Build Status](https://travis-ci.org/balena-io-modules/balena-config-json.svg?branch=master)](https://travis-ci.org/balena-io-modules/balena-config-json)
+[![Build status](https://ci.appveyor.com/api/projects/status/ndm6cfnvotbsyaqx/branch/master?svg=true)](https://ci.appveyor.com/project/balena-io-modules/balena-config-json/branch/master)
 
 Balena config.json manipulation utilities.
 
@@ -74,7 +74,7 @@ config.write '/dev/disk2', 'raspberry-pi',
 Support
 -------
 
-If you're having any problem, please [raise an issue](https://github.com/balena-io/balena-config-json/issues/new) on GitHub and the balena team will be happy to help.
+If you're having any problem, please [raise an issue](https://github.com/balena-io-modules/balena-config-json/issues/new) on GitHub and the balena team will be happy to help.
 
 Tests
 -----
@@ -88,8 +88,8 @@ $ gulp test
 Contribute
 ----------
 
-- Issue Tracker: [github.com/balena-io/balena-config-json/issues](https://github.com/balena-io/balena-config-json/issues)
-- Source Code: [github.com/balena-io/balena-config-json](https://github.com/balena-io/balena-config-json)
+- Issue Tracker: [github.com/balena-io-modules/balena-config-json/issues](https://github.com/balena-io-modules/balena-config-json/issues)
+- Source Code: [github.com/balena-io-modules/balena-config-json](https://github.com/balena-io-modules/balena-config-json)
 
 Before submitting a PR, please make sure that you include tests, and that [coffeelint](http://www.coffeelint.org/) runs without any warning:
 
