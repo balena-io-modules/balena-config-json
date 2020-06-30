@@ -1,5 +1,4 @@
 m = require('mochainon')
-Promise = require('bluebird')
 mockery = require('mockery')
 balena = require('balena-sdk').fromSharedOptions()
 

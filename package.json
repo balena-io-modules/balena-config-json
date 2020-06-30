@@ -46,7 +46,6 @@
   },
   "dependencies": {
     "balena-sdk": "^14.1.0",
-    "bluebird": "^3.7.2",
     "lodash": "^4.17.15",
     "resin-image-fs": "^5.0.9"
   }
