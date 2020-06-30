@@ -1,7 +1,7 @@
 m = require('mochainon')
 path = require('path')
 wary = require('wary')
-config = require('../lib/config')
+config = require('../build/config')
 files = require('./images/files.json')
 
 RASPBERRYPI = path.join(__dirname, 'images', 'raspberrypi.img')

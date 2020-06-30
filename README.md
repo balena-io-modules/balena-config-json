@@ -35,9 +35,9 @@ Documentation
 <a name="module_config.read"></a>
 
 ### config.read(image, type) ⇒ <code>Promise</code>
-**Kind**: static method of <code>[config](#module_config)</code>  
+**Kind**: static method of [<code>config</code>](#module_config)  
 **Summary**: Read a config.json from an image  
-**Access:** public  
+**Access**: public  
 **Fulfil**: <code>Object</code> - config.json  
 
 | Param | Type | Description |
@@ -47,15 +47,14 @@ Documentation
 
 **Example**  
 ```js
-config.read('/dev/disk2', 'raspberry-pi').then (config) ->
-	console.log(config)
+config.read('/dev/disk2', 'raspberry-pi').then (config) ->	console.log(config)
 ```
 <a name="module_config.write"></a>
 
 ### config.write(image, type, config) ⇒ <code>Promise</code>
-**Kind**: static method of <code>[config](#module_config)</code>  
+**Kind**: static method of [<code>config</code>](#module_config)  
 **Summary**: Write a config.json to an image  
-**Access:** public  
+**Access**: public  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -65,10 +64,7 @@ config.read('/dev/disk2', 'raspberry-pi').then (config) ->
 
 **Example**  
 ```js
-config.write '/dev/disk2', 'raspberry-pi',
-	username: 'foobar'
-.then ->
-	console.log('Done!')
+config.write '/dev/disk2', 'raspberry-pi',	username: 'foobar'.then ->	console.log('Done!')
 ```
 
 Support
@@ -91,7 +87,7 @@ Contribute
 - Issue Tracker: [github.com/balena-io-modules/balena-config-json/issues](https://github.com/balena-io-modules/balena-config-json/issues)
 - Source Code: [github.com/balena-io-modules/balena-config-json](https://github.com/balena-io-modules/balena-config-json)
 
-Before submitting a PR, please make sure that you include tests, and that [coffeelint](http://www.coffeelint.org/) runs without any warning:
+Before submitting a PR, please make sure that you include tests, and that `npm run lint` runs without any warning:
 
 ```sh
 $ gulp lint

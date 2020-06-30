@@ -6,7 +6,7 @@ balena = require('balena-sdk').fromSharedOptions()
 mockery.enable({ warnOnReplace: false, warnOnUnregistered: false })
 mockery.registerMock('balena-sdk', { fromSharedOptions: -> balena })
 
-utils = require('../lib/utils')
+utils = require('../build/utils')
 
 describe 'Utils:', ->
 
