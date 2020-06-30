@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+# v3.0.0
+## (2020-06-30)
+
+* Switch to returning native promises [Pagan Gazzard]
+
 ## 2.1.1 - 2020-01-24
 
 * Update dependencies and repo links [Pagan Gazzard]
