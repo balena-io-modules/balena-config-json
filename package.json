@@ -45,8 +45,7 @@
     "wary": "^1.1.1"
   },
   "dependencies": {
-    "balena-sdk": "^12.33.0",
-    "bluebird": "^3.7.2",
+    "balena-sdk": "^14.1.0",
     "lodash": "^4.17.15",
     "resin-image-fs": "^5.0.9"
   }
