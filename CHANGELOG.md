@@ -5,6 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+# v4.0.0
+## (2020-06-30)
+
+* Switch to returning native promises [Pagan Gazzard]
+* Update to generating es2018 [Pagan Gazzard]
+* Update to balena-sdk 14.x [Pagan Gazzard]
+
 # v3.0.0
 ## (2020-06-30)
 
