@@ -1,0 +1,166 @@
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: major
+    hash: d787399c40211d1f300dab5b86885dbad6062cab
+    subject: Update to balena-sdk 14.x
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: major
+    hash: f8e9ce1e0d0539211de36cbc295215c702595ea1
+    subject: Update to generating es2018
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: major
+    hash: 8a9803555ea2b7711909982ce4cba0dcde552dd8
+    subject: Switch to returning native promises
+  date: "2020-06-30T16:57:07Z"
+  version: 4.0.0
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: major
+    hash: b04550dcd17eac65f65db3f62282d52b64d9db18
+    subject: Switch to returning native promises
+  date: "2020-06-30T16:43:45Z"
+  version: 3.0.0
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: patch
+    hash: 8b2183e9e8007b167be3e29b0735dfbfe402840c
+    subject: Update dependencies and repo links
+  date: "2020-01-24T18:26:34Z"
+  version: 2.1.1
+- commits:
+  - author: Thodoris Greasidis
+    body: ""
+    footers:
+      change-type: patch
+    hash: b4297a8711c7ddd0f452b684731548b271894073
+    subject: Update the README for the balena rename
+  - author: Thodoris Greasidis
+    body: ""
+    footers:
+      change-type: patch
+    hash: 0b7869c32d74de39a547395264a6324fc1e69ba5
+    subject: Add a prepack step to be balenaCI compliant
+  - author: Thodoris Greasidis
+    body: ""
+    footers:
+      change-type: patch
+    hash: 1ceb915449d36672dad64dcec75ee2b3159790f6
+    subject: Remove the build output from the git repo
+  - author: Thodoris Greasidis
+    body: ""
+    footers:
+      change-type: patch
+    hash: 503d526d73438c22c633bc1894e57ba6532f932e
+    subject: Only publish the build & the standard module files
+  - author: Thodoris Greasidis
+    body: ""
+    footers:
+      change-type: minor
+      depends-on: https://github.com/balena-io/balena-sdk/issues/752
+      hq: https://github.com/balena-io/balena/pull/1740
+      resolves: '#14'
+    hash: cc37bb2892d14b9eb6a79f1fb545b43c98beee38
+    subject: Add support for private device types
+  date: "2019-10-16T13:21:35Z"
+  version: 2.1.0
+- commits:
+  - author: Gergely Imreh
+    body: ""
+    footers:
+      change-type: patch
+      signed-off-by: Gergely Imreh <gergely@balena.io>
+    hash: 4a3572d971225eff1dd1bc8753a2e5612fd7ba38
+    subject: 'dependencies: update to build with Node 12'
+  - author: Gergely Imreh
+    body: ""
+    footers:
+      change-type: patch
+      signed-off-by: Gergely Imreh <gergely@balena.io>
+    hash: 8ef6de115775369a5ea1f253634041bbed0254a8
+    subject: Add changes to generated files too
+  - author: Gergely Imreh
+    body: ""
+    footers:
+      change-type: patch
+      signed-off-by: Gergely Imreh <gergely@balena.io>
+    hash: 7736bc67a4de60e236546f3b0b8d72390e85276a
+    subject: 'CI: Update CI setup for travis and remove appveyor (not seem to be in
+      use)'
+  date: "2019-05-29T12:08:18Z"
+  version: 2.0.2
+- commits:
+  - author: Tim Perry
+    body: ""
+    footers:
+      change-type: patch
+    hash: b4e70a1076484b42a95a68ef1db5ff5b9a921f55
+    subject: Rename the package itself to balena-config-json
+  date: "2018-10-29T20:51:33Z"
+  version: 2.0.1
+- commits:
+  - author: Tim Perry
+    body: ""
+    footers:
+      change-type: major
+    hash: e056df4c8b12170ba7df8f8db7434c9c57688def
+    subject: Rename everything 'resin' to 'balena'
+  date: "2018-10-29T20:08:04Z"
+  version: 2.0.0
+- commits:
+  - author: Tim Perry
+    body: ""
+    footers:
+      signed-off-by: Tim Perry <tim@resin.io>
+    hash: 5fd38ade695e202c62acfdff3f7f8216e79321a2
+    subject: v1.0.3
+  - author: Tim Perry
+    body: ""
+    footers:
+      change-type: patch
+      signed-off-by: Tim Perry <tim@resin.io>
+    hash: 52c1359cade5283b442119beea41f806a3fe3227
+    subject: Update resin-image-fs, fixing issues with TX2 images
+  - author: Tim Perry
+    body: ""
+    footers:
+      signed-off-by: Tim Perry <tim@resin.io>
+    hash: 22cda08ca3959bbf2513a8de1e2b19c37702c509
+    subject: Update tests to test against Node 6, 8 and 10
+  - author: Tim Perry
+    body: ""
+    footers:
+      signed-off-by: Tim Perry <tim@resin.io>
+    hash: 1f890f163e9825a70dbeebb9d296e3d87cd3479b
+    subject: Add a test for the new format partition manifest
+  date: "2018-07-31T11:37:10Z"
+  version: 1.0.3
+- commits:
+  - author: Juan Cruz Viotti
+    body: |-
+      Back when this module was created, the `config.json` file used to be on
+      the fourth partition of the image (`RESIN-BOOT`). Nowadays, this file
+      exists on the first partition.
+      This module fetches information about the `config.json` location from
+      the API, so when this change was introduced, this module suddenly
+      started breaking.
+    footers:
+      see: https://github.com/resin-io/resin-config-json/pull/4
+      signed-off-by: Juan Cruz Viotti <jviotti@openmailbox.org>
+    hash: efcce7cbccc5c6bce188b9946bd9d8f3fe4273d9
+    subject: Update raspberrypi.img to contain config.json in the first partition
+  - author: Tim Perry
+    body: ""
+    hash: 678319bbc34dccc173c4f6d56e7fd072fa67f766
+    subject: Move to preconfigured Resin-SDK
+  date: "2017-01-19T16:29:58Z"
+  version: 1.0.2

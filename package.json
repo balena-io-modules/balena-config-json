@@ -35,18 +35,18 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@balena/lint": "^5.1.0",
-    "@types/lodash": "^4.14.157",
+    "@types/lodash": "^4.14.158",
     "coffeescript": "^2.5.1",
     "jsdoc-to-markdown": "^6.0.1",
     "mocha": "^6.2.3",
     "mochainon": "^1.0.0",
     "mockery": "^2.1.0",
-    "typescript": "^3.9.5",
+    "typescript": "^3.9.7",
     "wary": "^1.1.1"
   },
   "dependencies": {
-    "balena-sdk": "^14.1.0",
-    "lodash": "^4.17.15",
-    "resin-image-fs": "^5.0.9"
+    "balena-image-fs": "^7.0.1",
+    "balena-sdk": "^15.2.1",
+    "lodash": "^4.17.19"
   }
 }

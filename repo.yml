@@ -1,0 +1,6 @@
+type: 'node'
+upstream:
+  - repo: 'balena-sdk'
+    url: 'https://github.com/balena-io/balena-sdk'
+  - repo: 'balena-image-fs'
+    url: 'https://github.com/balena-io-modules/balena-image-fs'

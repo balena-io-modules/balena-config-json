@@ -11,6 +11,7 @@
         "target": "es2018",
         "noUnusedParameters": true,
         "noUnusedLocals": true,
+        "skipLibCheck": true,
         "moduleResolution": "node",
         "typeRoots": [
             "node_modules/@types",
