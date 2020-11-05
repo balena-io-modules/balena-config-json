@@ -45,7 +45,7 @@
     "wary": "^1.1.1"
   },
   "dependencies": {
-    "balena-image-fs": "^7.0.1",
+    "balena-image-fs": "^7.0.4",
     "balena-sdk": "^15.2.1",
     "lodash": "^4.17.19"
   }
