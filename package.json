@@ -1,6 +1,6 @@
 {
   "name": "balena-config-json",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Balena config.json manipulation utilities",
   "main": "build/config.js",
   "homepage": "https://github.com/balena-io-modules/balena-config-json",

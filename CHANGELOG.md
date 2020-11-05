@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+## 4.1.1 - 2020-11-05
+
+* Update balena-image-fs to ^7.0.4 [Alexis Svinartchouk]
+* Update generated README [Alexis Svinartchouk]
+
 ## 4.1.0 - 2020-08-04
 
 * Add .versionbot/CHANGELOG.yml for nested changelogs [Pagan Gazzard]
