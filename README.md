@@ -47,7 +47,8 @@ Documentation
 
 **Example**  
 ```js
-config.read('/dev/disk2', 'raspberry-pi').then (config) ->	console.log(config)
+config.read('/dev/disk2', 'raspberry-pi').then (config) ->
+	console.log(config)
 ```
 <a name="module_config.write"></a>
 
@@ -64,7 +65,10 @@ config.read('/dev/disk2', 'raspberry-pi').then (config) ->	console.log(config)
 
 **Example**  
 ```js
-config.write '/dev/disk2', 'raspberry-pi',	username: 'foobar'.then ->	console.log('Done!')
+config.write '/dev/disk2', 'raspberry-pi',
+	username: 'foobar'
+.then ->
+	console.log('Done!')
 ```
 
 Support
