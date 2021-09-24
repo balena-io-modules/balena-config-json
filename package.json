@@ -23,12 +23,12 @@
   },
   "scripts": {
     "build": "tsc && npm run readme",
-    "lint": "balena-lint -e js --fix lib",
+    "lint": "balena-lint --fix lib",
     "pretest": "npm run build",
     "test": "mocha -r coffeescript/register tests/**/*.spec.coffee && coffee tests/e2e.coffee",
     "posttest": "npm run lint",
     "prepack": "npm run build",
-    "readme": "jsdoc2md --template doc/README.hbs lib/config.js > README.md"
+    "readme": "jsdoc2md --template doc/README.hbs build/config.js > README.md"
   },
   "author": "Balena Inc. (https://balena.io/)",
   "license": "Apache-2.0",

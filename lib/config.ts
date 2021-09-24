@@ -22,6 +22,10 @@ import * as imagefs from 'balena-image-fs';
 import * as utils from './utils';
 import { promisify } from 'util';
 
+export interface ConfigJson {
+	[key: string]: any;
+}
+
 /**
  * @summary Read a config.json from an image
  * @function
@@ -37,7 +41,7 @@ import { promisify } from 'util';
  * config.read('/dev/disk2', 'raspberry-pi').then (config) ->
  * 	console.log(config)
  */
-export async function read(image, type) {
+export async function read(image: string, type: string): Promise<ConfigJson> {
 	const configuration = await utils.getConfigPartitionInformationByType(type);
 	const file = await imagefs.interact(
 		image,
@@ -68,10 +72,10 @@ export async function read(image, type) {
  * .then ->
  * 	console.log('Done!')
  */
-export async function write(image, type, config) {
-	config = JSON.stringify(config);
+export async function write(image: string, type: string, config: ConfigJson) {
+	const configStr = JSON.stringify(config);
 	const configuration = await utils.getConfigPartitionInformationByType(type);
 	await imagefs.interact(image, configuration.partition, async (fs) => {
-		return await promisify(fs.writeFile)(configuration.path, config);
+		return await promisify(fs.writeFile)(configuration.path, configStr);
 	});
 }
