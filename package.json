@@ -23,9 +23,9 @@
   },
   "scripts": {
     "build": "tsc && npm run readme",
-    "lint": "balena-lint --fix lib",
+    "lint": "balena-lint --fix lib tests",
     "pretest": "npm run build",
-    "test": "mocha -r coffeescript/register tests/**/*.spec.coffee && coffee tests/e2e.coffee",
+    "test": "tsc -p tests && mocha",
     "posttest": "npm run lint",
     "prepack": "npm run build",
     "readme": "jsdoc2md --template doc/README.hbs build/config.js > README.md"
@@ -42,11 +42,11 @@
     "jsdoc-to-markdown": "^6.0.1",
     "mocha": "^9.1.2",
     "typescript": "^4.4.3",
-    "wary": "^1.1.1"
+    "yauzl": "^2.10.0"
   },
   "dependencies": {
     "balena-image-fs": "^7.0.6",
-    "balena-sdk": "^15.51.1",
-    "lodash": "^4.17.21"
+    "file-disk": "^8.0.1",
+    "partitioninfo": "^6.0.2"
   }
 }

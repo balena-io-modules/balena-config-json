@@ -1,5 +1,5 @@
 /*
-Copyright 2016-2020 Balena Ltd.
+Copyright 2016-2021 Balena Ltd.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,8 +19,10 @@ limitations under the License.
  */
 
 import * as imagefs from 'balena-image-fs';
-import * as utils from './utils';
+import { getBootPartition, configJsonPath } from './utils';
 import { promisify } from 'util';
+
+export { getBootPartition };
 
 export interface ConfigJson {
 	[key: string]: any;
@@ -32,7 +34,7 @@ export interface ConfigJson {
  * @public
  *
  * @param {String} image - image or drive path
- * @param {String} type - device type slug
+ * @param {String} _type - ignored (device type, no longer required)
  *
  * @fulfil {Object} - config.json
  * @returns {Promise}
@@ -41,17 +43,13 @@ export interface ConfigJson {
  * config.read('/dev/disk2', 'raspberry-pi').then (config) ->
  * 	console.log(config)
  */
-export async function read(image: string, type: string): Promise<ConfigJson> {
-	const configuration = await utils.getConfigPartitionInformationByType(type);
-	const file = await imagefs.interact(
-		image,
-		configuration.partition,
-		async (fs) => {
-			return await promisify(fs.readFile)(configuration.path, {
-				encoding: 'utf8',
-			});
-		},
-	);
+export async function read(image: string, _type: string): Promise<ConfigJson> {
+	const bootPartNumber = await getBootPartition(image);
+	const file = await imagefs.interact(image, bootPartNumber, async (fs) => {
+		return await promisify(fs.readFile)(configJsonPath, {
+			encoding: 'utf8',
+		});
+	});
 	return JSON.parse(file);
 }
 
@@ -61,7 +59,7 @@ export async function read(image: string, type: string): Promise<ConfigJson> {
  * @public
  *
  * @param {String} image - image or drive path
- * @param {String} type - device type slug
+ * @param {String} _type - ignored (device type, no longer required)
  * @param {Object} config - config.json
  *
  * @returns {Promise}
@@ -72,10 +70,10 @@ export async function read(image: string, type: string): Promise<ConfigJson> {
  * .then ->
  * 	console.log('Done!')
  */
-export async function write(image: string, type: string, config: ConfigJson) {
+export async function write(image: string, _type: string, config: ConfigJson) {
 	const configStr = JSON.stringify(config);
-	const configuration = await utils.getConfigPartitionInformationByType(type);
-	await imagefs.interact(image, configuration.partition, async (fs) => {
-		return await promisify(fs.writeFile)(configuration.path, configStr);
+	const bootPartNumber = await getBootPartition(image);
+	await imagefs.interact(image, bootPartNumber, async (fs) => {
+		return await promisify(fs.writeFile)(configJsonPath, configStr);
 	});
 }
