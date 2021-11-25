@@ -1,0 +1,282 @@
+/**
+ * @license
+ * Copyright 2021 Balena Ltd.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { expect } from 'chai';
+import { randomBytes } from 'crypto';
+import { promises as fs } from 'fs';
+import * as path from 'path';
+
+import { read, write } from '../build/config';
+import { getBootPartition } from '../build/utils';
+import { downloadOS, extractFromZipArchive, isZipFile } from './utils';
+
+import type { BalenaSDK, DeviceType } from 'balena-sdk';
+
+const fullTest = false;
+const quickTestDeviceTypes = [
+	'raspberrypi3', // very popular with partition number 1, non-flasher image
+	'intel-nuc', // very popular with partition number 1, flasher image
+	// Intel-Edison is an odd one, needs unzipping the downloaded image to extract
+	// 'resin-image-edison.hddimg', and that image contains an empty partition table!
+	'intel-edison',
+	'jetson-xavier', // largest partition number, 37
+];
+
+describe('balena-config-json', function () {
+	let sdk: BalenaSDK;
+	let deviceTypes: DeviceType[];
+
+	this.beforeAll(async () => {
+		const { fromSharedOptions } = await import('balena-sdk');
+		sdk = fromSharedOptions();
+		deviceTypes = (
+			await sdk.models.deviceType.getAllSupported({
+				$select: ['slug', 'name'],
+			})
+		).sort((d1, d2) => d1.slug.localeCompare(d2.slug));
+	});
+
+	it('should report the expected partition number for selected device types', async () => {
+		const testedDevices: string[] = [];
+		for (const deviceType of deviceTypes) {
+			const slug = deviceType.slug;
+			if (!fullTest && !quickTestDeviceTypes.includes(slug)) {
+				continue;
+			}
+			const expectedConfig = expectedConfigBySlug[slug];
+			if (!expectedConfig) {
+				console.error(
+					`[warn] Expected partition number not available for device type "${slug}" - skipping`,
+				);
+				continue;
+			}
+			// expectedPartNumber may be undefined, e.g. for the Intel Edison
+			// that has an empty partition table
+			const part = expectedConfig.config.partition;
+			const expectedPartNumber: number | undefined =
+				typeof part === 'number'
+					? part
+					: typeof part === 'object'
+					? part.primary
+					: part;
+			console.error(
+				`[info] Testing "${slug}" (expected partition number: ${expectedPartNumber})`,
+			);
+			const imgPath = await getImageForDeviceType(sdk, slug);
+			const partNumber: number | undefined = await getBootPartition(imgPath);
+			expect(partNumber).to.equal(expectedPartNumber);
+
+			testedDevices.push(slug);
+		}
+		expect(testedDevices).to.include.members(quickTestDeviceTypes);
+	}).timeout(0);
+
+	it('should read and write config.json for selected device types', async () => {
+		// these device type slugs don't have OS images for download
+		const exclude = ['generic', 'generic-aarch64'];
+		const testedDevices: string[] = [];
+		for (const deviceType of deviceTypes) {
+			const slug = deviceType.slug;
+			if (
+				exclude.includes(slug) ||
+				(!fullTest && !quickTestDeviceTypes.includes(slug))
+			) {
+				continue;
+			}
+			console.error(`[info] Testing "${slug}" (read/write/read 'config.json')`);
+			const imgPath = await getImageForDeviceType(sdk, slug);
+
+			let config = await read(imgPath, slug);
+			expect(config.deviceType).to.equal(slug);
+
+			const randomStr = randomBytes(16).toString('hex');
+			config['test-random-bytes'] = randomStr;
+			await write(imgPath, slug, config);
+
+			config = await read(imgPath, slug);
+			expect(config['test-random-bytes']).to.equal(randomStr);
+			expect(config.deviceType).to.equal(slug);
+
+			testedDevices.push(slug);
+		}
+		expect(testedDevices).to.include.members(quickTestDeviceTypes);
+	}).timeout(30300);
+});
+
+/**
+ * Create a cache folder for storing balenaOS downloads. If the relevant
+ * balenaOS image file does not exist in the cache folder, download it.
+ * For device types that specify an image file to be extracted from a zip
+ * archive, do the extraction as well.
+ *
+ * @returns Path to the downloaded (and possibly extracted) image file.
+ */
+async function getImageForDeviceType(sdk: BalenaSDK, deviceType: string) {
+	const cacheDir = path.join(
+		await sdk.settings.get('dataDirectory'),
+		'cache',
+		'balena-config-json-e2e',
+	);
+	await fs.mkdir(cacheDir, { recursive: true });
+	const imageFiles = await fs.readdir(cacheDir);
+	const prefix = `balenaOS-${deviceType}-`;
+	// image file format: balenaOS-n310-tx2-2.56.0+rev4.prod.img
+	const imgFile = imageFiles.find(
+		(name) =>
+			name.startsWith(prefix) &&
+			name
+				.substring(prefix.length)
+				.match(/\d+\.\d+\.\d+(\+rev\d+)?\.(dev|prod)\.img/),
+	);
+	let imgPath: string;
+	if (imgFile) {
+		imgPath = path.join(cacheDir, imgFile);
+		if (process.env.DEBUG) {
+			console.error(`[debug] Found "${imgPath}", skipping download.`);
+		}
+	} else {
+		const version = await sdk.models.os.getMaxSatisfyingVersion(
+			deviceType,
+			'latest',
+		);
+		imgPath = path.join(cacheDir, `balenaOS-${deviceType}-${version}.img`);
+		await downloadOS(sdk, deviceType, imgPath);
+	}
+	const innerImgPath = expectedConfigBySlug[deviceType]?.config.image;
+	if (typeof innerImgPath === 'string' && (await isZipFile(imgPath))) {
+		const extractDir = path.dirname(imgPath);
+		await extractFromZipArchive(imgPath, extractDir, [innerImgPath]);
+		imgPath = path.join(extractDir, innerImgPath);
+	}
+	return imgPath;
+}
+
+/**
+ * This list was generated with the deprecated `getManifestBySlug` method:
+ *   for (const dt of deviceTypes) {
+ *     const manifest = await getBalenaSdk().models.device.getManifestBySlug(dt.slug);
+ *     console.error(`${dt.slug}: ${JSON.stringify((manifest as any).configuration)}`);
+ *   }
+ */
+const expectedConfigBySlug: {
+	[slug: string]:
+		| undefined
+		| {
+				config: {
+					partition?: number | { primary: number; logical?: number };
+					image?: string;
+				};
+		  };
+} = {
+	'aio-3288c': { config: { partition: { primary: 1 } } },
+	'am571x-evm': { config: { partition: { primary: 1 } } },
+	'apalis-imx6q': { config: { partition: { primary: 1 } } },
+	artik10: { config: { partition: { primary: 1 } } },
+	artik5: { config: { partition: { primary: 1 } } },
+	artik530: { config: { partition: { primary: 1 } } },
+	artik533s: { config: { partition: { primary: 1 } } },
+	artik710: { config: { partition: { primary: 1 } } },
+	'astro-tx2': { config: { partition: { primary: 1 } } },
+	'asus-tinker-board': { config: { partition: { primary: 1 } } },
+	'asus-tinker-board-s': { config: { partition: { primary: 1 } } },
+	'asus-tinker-edge-t': { config: { partition: { primary: 1 } } },
+	'bananapi-m1-plus': { config: { partition: { primary: 1 } } },
+	'beagleboard-xm': { config: { partition: { primary: 1 } } },
+	'beaglebone-black': { config: { partition: { primary: 1 } } },
+	'beaglebone-green': { config: { partition: { primary: 1 } } },
+	'beaglebone-green-gateway': { config: { partition: { primary: 1 } } },
+	'beaglebone-green-wifi': { config: { partition: { primary: 1 } } },
+	'beaglebone-pocket': { config: { partition: { primary: 1 } } },
+	'blackboard-tx2': { config: { partition: { primary: 1 } } },
+	'ccimx8x-sbc-pro': { config: { partition: { primary: 1 } } },
+	'cl-som-imx8': { config: { partition: { primary: 1 } } },
+	'colibri-imx6dl': { config: { partition: { primary: 1 } } },
+	'coral-dev': { config: { partition: { primary: 1 } } },
+	'cybertan-ze250': { config: { partition: { primary: 1 } } },
+	edge: undefined,
+	'etcher-pro': { config: { partition: { primary: 1 } } },
+	fincm3: { config: { partition: { primary: 1 } } },
+	'firefly-rk3288': { config: { partition: { primary: 1 } } },
+	'floyd-nano': { config: { partition: 12 } },
+	generic: undefined, // alias to genericx86-64-ext ?
+	'generic-aarch64': undefined,
+	'genericx86-64-ext': { config: { partition: { primary: 1 } } },
+	hummingboard: { config: { partition: { primary: 1 } } },
+	'imx6ul-var-dart': { config: { partition: { primary: 1 } } },
+	'imx7-var-som': { config: { partition: { primary: 1 } } },
+	'imx8m-var-dart': { config: { partition: { primary: 1 } } },
+	'imx8mm-var-dart': { config: { partition: { primary: 1 } } },
+	'intel-edison': { config: { image: 'resin-image-edison.hddimg' } },
+	'intel-nuc': { config: { partition: { primary: 1 } } },
+	'iot-gate-imx8': { config: { partition: { primary: 1 } } },
+	iot2000: { config: { partition: { primary: 1 } } },
+	'jetson-nano': { config: { partition: 12 } },
+	'jetson-nano-2gb-devkit': { config: { partition: 14 } },
+	'jetson-nano-emmc': { config: { partition: 12 } },
+	'jetson-tx1': { config: { partition: { primary: 10 } } },
+	'jetson-tx2': { config: { partition: { primary: 1 } } },
+	'jetson-tx2-nx-devkit': { config: { partition: { primary: 24 } } },
+	'jetson-xavier': { config: { partition: { primary: 37 } } },
+	'jetson-xavier-nx-devkit': { config: { partition: { primary: 9 } } },
+	'jetson-xavier-nx-devkit-emmc': { config: { partition: { primary: 9 } } },
+	'jetson-xavier-nx-devkit-seeed-2mic-hat': {
+		config: { partition: { primary: 9 } },
+	},
+	'jn30b-nano': { config: { partition: 12 } },
+	kitra520: { config: { partition: { primary: 1 } } },
+	kitra710: { config: { partition: { primary: 1 } } },
+	'n310-tx2': { config: { partition: { primary: 1 } } },
+	'n510-tx2': { config: { partition: { primary: 1 } } },
+	'nanopc-t4': { config: { partition: { primary: 1 } } },
+	'nanopi-neo-air': { config: { partition: { primary: 1 } } },
+	nitrogen6x: { config: { partition: { primary: 1 } } },
+	nitrogen8mm: { config: { partition: { primary: 1 } } },
+	'npe-x500-m3': { config: { partition: { primary: 1 } } },
+	'odroid-c1': { config: { partition: { primary: 1 } } },
+	'odroid-xu4': { config: { partition: { primary: 1 } } },
+	'orange-pi-one': { config: { partition: { primary: 1 } } },
+	'orange-pi-zero': { config: { partition: { primary: 1 } } },
+	'orangepi-plus2': { config: { partition: { primary: 1 } } },
+	'orbitty-tx2': { config: { partition: { primary: 1 } } },
+	parallella: { config: { partition: { primary: 1 } } },
+	'photon-nano': { config: { partition: 12 } },
+	'photon-tx2-nx': { config: { partition: { primary: 24 } } },
+	'photon-xavier-nx': { config: { partition: { primary: 9 } } },
+	qemux86: { config: { partition: { primary: 1 } } },
+	'qemux86-64': { config: { partition: { primary: 1 } } },
+	'raspberry-pi': { config: { partition: { primary: 1 } } },
+	'raspberry-pi2': { config: { partition: { primary: 1 } } },
+	raspberrypi3: { config: { partition: { primary: 1 } } },
+	'raspberrypi3-64': { config: { partition: { primary: 1 } } },
+	'raspberrypi4-64': { config: { partition: { primary: 1 } } },
+	'raspberrypi400-64': { config: { partition: { primary: 1 } } },
+	'raspberrypicm4-ioboard': { config: { partition: { primary: 1 } } },
+	'revpi-connect': { config: { partition: { primary: 1 } } },
+	'revpi-core-3': { config: { partition: { primary: 1 } } },
+	'rockpi-4b-rk3399': { config: { partition: 4 } },
+	skx2: { config: { partition: { primary: 1 } } },
+	'smarc-px30': { config: { partition: { primary: 1 } } },
+	'spacely-tx2': { config: { partition: { primary: 1 } } },
+	'surface-go': { config: { partition: { primary: 1 } } },
+	'surface-pro-6': { config: { partition: { primary: 1 } } },
+	ts4900: { config: { partition: { primary: 1 } } },
+	ts7700: { config: { partition: { primary: 4, logical: 1 } } },
+	'up-board': { config: { partition: { primary: 1 } } },
+	'var-som-mx6': { config: { partition: { primary: 1 } } },
+	'via-vab820-quad': { config: { partition: { primary: 1 } } },
+	'zynq-xz702': { config: { partition: { primary: 1 } } },
+};

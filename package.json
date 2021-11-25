@@ -23,30 +23,30 @@
   },
   "scripts": {
     "build": "tsc && npm run readme",
-    "lint": "balena-lint -e js --typescript lib",
-    "lint-fix": "balena-lint -e js --typescript --fix lib",
+    "lint": "balena-lint --fix lib tests",
     "pretest": "npm run build",
-    "test": "mocha -r coffeescript/register tests/**/*.spec.coffee && coffee tests/e2e.coffee",
+    "test": "tsc -p tests && mocha",
     "posttest": "npm run lint",
     "prepack": "npm run build",
-    "readme": "jsdoc2md --template doc/README.hbs lib/config.js > README.md"
+    "readme": "jsdoc2md --template doc/README.hbs build/config.js > README.md"
   },
-  "author": "Juan Cruz Viotti <juan@balena.io>",
+  "author": "Balena Inc. (https://balena.io/)",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@balena/lint": "^5.1.0",
-    "@types/lodash": "^4.14.158",
-    "coffeescript": "^2.5.1",
+    "@balena/lint": "^6.1.1",
+    "@types/chai": "^4.2.22",
+    "@types/mocha": "^9.0.0",
+    "@types/yauzl": "^2.9.2",
+    "balena-sdk": "^15.51.4",
+    "chai": "^4.3.4",
     "jsdoc-to-markdown": "^6.0.1",
-    "mocha": "^6.2.3",
-    "mochainon": "^1.0.0",
-    "mockery": "^2.1.0",
-    "typescript": "^3.9.7",
-    "wary": "^1.1.1"
+    "mocha": "^9.1.2",
+    "typescript": "^4.4.3",
+    "yauzl": "^2.10.0"
   },
   "dependencies": {
-    "balena-image-fs": "^7.0.4",
-    "balena-sdk": "^15.2.1",
-    "lodash": "^4.17.19"
+    "balena-image-fs": "^7.0.6",
+    "file-disk": "^8.0.1",
+    "partitioninfo": "^6.0.2"
   }
 }

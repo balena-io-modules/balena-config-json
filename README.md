@@ -29,13 +29,13 @@ Documentation
 
 
 * [config](#module_config)
-    * [.read(image, type)](#module_config.read) ⇒ <code>Promise</code>
-    * [.write(image, type, config)](#module_config.write) ⇒ <code>Promise</code>
+    * [~read(image, _type)](#module_config..read) ⇒ <code>Promise</code>
+    * [~write(image, _type, config)](#module_config..write) ⇒ <code>Promise</code>
 
-<a name="module_config.read"></a>
+<a name="module_config..read"></a>
 
-### config.read(image, type) ⇒ <code>Promise</code>
-**Kind**: static method of [<code>config</code>](#module_config)  
+### config~read(image, _type) ⇒ <code>Promise</code>
+**Kind**: inner method of [<code>config</code>](#module_config)  
 **Summary**: Read a config.json from an image  
 **Access**: public  
 **Fulfil**: <code>Object</code> - config.json  
@@ -43,24 +43,24 @@ Documentation
 | Param | Type | Description |
 | --- | --- | --- |
 | image | <code>String</code> | image or drive path |
-| type | <code>String</code> | device type slug |
+| _type | <code>String</code> | ignored (device type, no longer required) |
 
 **Example**  
 ```js
 config.read('/dev/disk2', 'raspberry-pi').then (config) ->
 	console.log(config)
 ```
-<a name="module_config.write"></a>
+<a name="module_config..write"></a>
 
-### config.write(image, type, config) ⇒ <code>Promise</code>
-**Kind**: static method of [<code>config</code>](#module_config)  
+### config~write(image, _type, config) ⇒ <code>Promise</code>
+**Kind**: inner method of [<code>config</code>](#module_config)  
 **Summary**: Write a config.json to an image  
 **Access**: public  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | image | <code>String</code> | image or drive path |
-| type | <code>String</code> | device type slug |
+| _type | <code>String</code> | ignored (device type, no longer required) |
 | config | <code>Object</code> | config.json |
 
 **Example**  
