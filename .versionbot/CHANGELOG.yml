@@ -1,4 +1,31 @@
 - commits:
+    - subject: Avoid need for internet access (replace API query with image inspection)
+      hash: bdc24cba1ad0e5e9d79dc44e297ba44f14a43537
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Paulo Castro
+      nested: []
+    - subject: Convert lib/config.js to TypeScript
+      hash: 8f1eeba38733b84a93db6936591453788de61977
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Paulo Castro
+      nested: []
+    - subject: 'Update dependencies, .gitignore, .npmrc'
+      hash: 7efaf4947eb399de526913ec2ecce6c642c0280b
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Paulo Castro
+      nested: []
+  version: 4.2.0
+  date: 2021-10-22T22:25:57.801Z
+- commits:
     - subject: Update balena-image-fs to ^7.0.4
       hash: f616d4bc4dbb18ec2592e1c1f2d1b41c8bffe71d
       body: ''

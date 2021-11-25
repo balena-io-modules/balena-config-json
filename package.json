@@ -1,6 +1,6 @@
 {
   "name": "balena-config-json",
-  "version": "4.1.1",
+  "version": "4.2.0",
   "description": "Balena config.json manipulation utilities",
   "main": "build/config.js",
   "homepage": "https://github.com/balena-io-modules/balena-config-json",
@@ -48,5 +48,8 @@
     "balena-image-fs": "^7.0.6",
     "file-disk": "^8.0.1",
     "partitioninfo": "^6.0.2"
+  },
+  "versionist": {
+    "publishedAt": "2021-10-22T22:25:57.880Z"
   }
 }

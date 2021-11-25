@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+## 4.2.0 - 2021-10-22
+
+* Avoid need for internet access (replace API query with image inspection) [Paulo Castro]
+* Convert lib/config.js to TypeScript [Paulo Castro]
+* Update dependencies, .gitignore, .npmrc [Paulo Castro]
+
 ## 4.1.1 - 2020-11-05
 
 * Update balena-image-fs to ^7.0.4 [Alexis Svinartchouk]
