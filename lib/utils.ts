@@ -54,6 +54,7 @@ export async function getBootPartition(
 			}
 			let [partNumber, partName] = await findBootPartitionByName(
 				partitionInfo,
+				disk,
 				imagePath,
 			);
 			if (partNumber === undefined) {
@@ -81,8 +82,10 @@ export async function getBootPartition(
 	);
 }
 
+// Find partition by name on GPT or by label on MBR.
 async function findBootPartitionByName(
 	partitionInfo: GetPartitionsResult,
+	fileDisk: filedisk.FileDisk,
 	imagePath: string,
 ): Promise<[number | undefined, string | undefined]> {
 	const bootNames = ['resin-boot', 'flash-boot', 'balena-boot'];
@@ -98,14 +101,28 @@ async function findBootPartitionByName(
 		);
 		if (bootPart && typeof bootPart.index === 'number') {
 			return [bootPart.index, bootPart.name];
-		} else {
-			console.error(`\
-[warn] "${imagePath}":
-[warn]   Found GPT partition table with ${partitions.length} partitions,
-[warn]   but none with a name in ['${bootNames.join("', '")}'].
-[warn]   Will scan all partitions for contents.`);
+		}
+	} else {
+		// MBR
+		for (const partition of partitions) {
+			try {
+				const label = await imagefs.getFsLabel(fileDisk, partition);
+				if (bootNames.includes(label) && typeof partition.index === 'number') {
+					return [partition.index, label];
+				}
+			} catch (e) {
+				// LabelNotFound is expected and not fatal.
+				if (!(e instanceof imagefs.LabelNotFound)) {
+					throw e;
+				}
+			}
 		}
 	}
+	console.error(`\
+[warn] "${imagePath}":
+[warn]   Found partition table with ${partitions.length} partitions,
+[warn]   but none with a name/label in ['${bootNames.join("', '")}'].
+[warn]   Will scan all partitions for contents.`);
 	return [undefined, undefined];
 }
 
