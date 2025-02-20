@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+## 4.2.1 - 2025-02-20
+
+* Fixes for tests [Ken Bannister]
+* Enable Flowzone CI pipeline for npm modules [Kyle Harding]
+
 ## 4.2.0 - 2021-10-22
 
 * Avoid need for internet access (replace API query with image inspection) [Paulo Castro]

@@ -1,7 +1,33 @@
 - commits:
+    - subject: Fixes for tests
+      hash: 3129af229b7dc125553c7ad50391712bd343034d
+      body: |
+        * Use latest balena SDK for OS download
+        * Update test device types and image filename format
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Ken Bannister <kb2ma@runbox.com>
+        signed-off-by: Ken Bannister <kb2ma@runbox.com>
+      author: Ken Bannister
+      nested: []
+    - subject: Enable Flowzone CI pipeline for npm modules
+      hash: 274a9264bacf1a99d0f30ae708fce08a4322f5e2
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 4.2.1
+  title: ""
+  date: 2025-02-20T17:08:31.332Z
+- commits:
     - subject: Avoid need for internet access (replace API query with image inspection)
       hash: bdc24cba1ad0e5e9d79dc44e297ba44f14a43537
-      body: ''
+      body: ""
       footer:
         Change-type: minor
         change-type: minor
@@ -9,15 +35,15 @@
       nested: []
     - subject: Convert lib/config.js to TypeScript
       hash: 8f1eeba38733b84a93db6936591453788de61977
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
       author: Paulo Castro
       nested: []
-    - subject: 'Update dependencies, .gitignore, .npmrc'
+    - subject: Update dependencies, .gitignore, .npmrc
       hash: 7efaf4947eb399de526913ec2ecce6c642c0280b
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -28,7 +54,7 @@
 - commits:
     - subject: Update balena-image-fs to ^7.0.4
       hash: f616d4bc4dbb18ec2592e1c1f2d1b41c8bffe71d
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -36,7 +62,7 @@
       nested: []
     - subject: Update generated README
       hash: 00e163a33644b02c115351308f979c34082e0b9e
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -47,7 +73,7 @@
 - commits:
     - subject: Add .versionbot/CHANGELOG.yml for nested changelogs
       hash: a894d6de3d66475287a2c4b9c4346b1c7482bf4c
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -66,7 +92,7 @@
         - commits:
             - subject: Convert majority to async/await
               hash: fdbbc1aa8cc23d9d28704e5d88f88713f7d28aff
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -75,12 +101,12 @@
           version: balena-sdk-15.2.1
           date: 2020-08-03T09:26:10.989Z
         - commits:
-            - subject: 'device: add method to update target supervisor release'
+            - subject: "device: add method to update target supervisor release"
               hash: 0ac0366f823489d8c3459d9ebcc1077b22ea4c66
-              body: ''
+              body: ""
               footer:
-                Connects-to: 'https://github.com/balena-io/balena-io/pull/2177'
-                connects-to: 'https://github.com/balena-io/balena-io/pull/2177'
+                Connects-to: https://github.com/balena-io/balena-io/pull/2177
+                connects-to: https://github.com/balena-io/balena-io/pull/2177
                 Change-type: minor
                 change-type: minor
                 Signed-off-by: Matthew McGinn <matthew@balena.io>
@@ -92,7 +118,7 @@
         - commits:
             - subject: Deduplicate device update methods
               hash: 0cb9602b881ec5dc1a142d90050917a050d04887
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -124,7 +150,7 @@
                         - commits:
                             - subject: Add support for using named ids
                               hash: f6035bf5240e8aea1b92997d976cebd9a1857a61
-                              body: ''
+                              body: ""
                               footer:
                                 Change-type: minor
                                 change-type: minor
@@ -136,7 +162,7 @@
                 - commits:
                     - subject: Add lazy loading for most modules
                       hash: 45042aca602e44a8e4eefdf0fb57ab188530a48e
-                      body: ''
+                      body: ""
                       footer:
                         Change-type: minor
                         change-type: minor
@@ -146,9 +172,9 @@
           version: balena-sdk-15.1.0
           date: 2020-07-27T16:44:09.892Z
         - commits:
-            - subject: 'typings: Fix the PineWithSelect & related type helpers'
+            - subject: "typings: Fix the PineWithSelect & related type helpers"
               hash: dc1d8625d93fa25876c3542a96cd5a7883a5690b
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -156,9 +182,9 @@
                 signed-off-by: Thodoris Greasidis <thodoris@balena.io>
               author: Thodoris Greasidis
               nested: []
-            - subject: 'typings: Use the native TypeScript Omit type helper'
+            - subject: "typings: Use the native TypeScript Omit type helper"
               hash: 98e19e4cf5d0ff40486d49501f9c95d45eff2e74
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -171,7 +197,7 @@
         - commits:
             - subject: Fix code snippet for initializing balena-sdk
               hash: b1c00f6ae90035c936ac691e9c15639ba60c5b87
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -182,7 +208,7 @@
         - commits:
             - subject: Fix SupportTier/includes__SLA typing
               hash: 0225493520704d89bbbbfb5d392692e190db5fd5
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -191,11 +217,9 @@
           version: balena-sdk-15.0.1
           date: 2020-07-15T16:48:22.281Z
         - commits:
-            - subject: >-
-                **BREAKING** Export setSharedOptions & fromSharedOptions
-                separately
+            - subject: "**BREAKING** Export setSharedOptions & fromSharedOptions separately"
               hash: ce0aed03a81ebf1d1b45e18e79f7ac242ab98b67
-              body: ''
+              body: ""
               footer:
                 Change-type: major
                 change-type: major
@@ -203,21 +227,19 @@
                 signed-off-by: Thodoris Greasidis <thodoris@balena.io>
               author: Thodoris Greasidis
               nested: []
-            - subject: '**BREAKING** Export as an ES6 module'
+            - subject: "**BREAKING** Export as an ES6 module"
               hash: 0d916adde250c5f031286bce7a0bcbc38cf2f0e6
-              body: ''
+              body: ""
               footer:
-                Resolves: '#922'
-                resolves: '#922'
+                Resolves: "#922"
+                resolves: "#922"
                 Change-type: major
                 change-type: major
                 Signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                 signed-off-by: Thodoris Greasidis <thodoris@balena.io>
               author: Thodoris Greasidis
               nested: []
-            - subject: >-
-                Update dependencies and switch all returned promises to native
-                promises
+            - subject: Update dependencies and switch all returned promises to native promises
               hash: af64b57ad2c16b983296e0e1caa14553fd711b70
               body: |
                 Update balena-auth from 3.1.0 to 4.0.2
@@ -233,7 +255,7 @@
                 - commits:
                     - subject: Add .versionbot/CHANGELOG.yml for nested changelogs
                       hash: 286d4797c6d5cfd755cf6d04bb70169e6bb2b92f
-                      body: ''
+                      body: ""
                       footer:
                         Change-type: patch
                         change-type: patch
@@ -242,57 +264,57 @@
                   date: 2020-07-13T12:56:45.554Z
                 - commits:
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                       hash: 756c63445733bb8e7f36014853ac19ca0195d5f9
                       subject: Explicitly add tslib dependency
-                  date: '2020-07-03T17:54:56Z'
+                  date: 2020-07-03T17:54:56Z
                   version: balena-auth-4.0.1
                 - commits:
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: 7935d9a0fbd576eb2ec651b1f7c879401954f3fe
                       subject: Update to balena-settings-storage 6.x
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: 5c60288aa585b8046e707c2388be290b273cbe59
                       subject: Update target to es2015
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: a79c4574b3964ddd59e18844de046751182a35aa
                       subject: Switch to native promises
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       hash: 1d84aca2cdaa0b11ace2dafd44099fd7340ba290
                       subject: Enable strict type checking
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: 8248bf5bba4f972a3b262fe8317caa27281f6ea8
                       subject: Specify node 10+
-                  date: '2020-07-02T15:23:00Z'
+                  date: 2020-07-02T15:23:00Z
                   version: balena-auth-4.0.0
                 - commits:
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                       hash: 6dbc95de3543cddab72ba6516cb998a212e63151
                       subject: Switch to @balena/lint for linting
-                  date: '2020-07-02T14:58:05Z'
+                  date: 2020-07-02T14:58:05Z
                   version: balena-auth-3.1.1
                 - commits:
                     - subject: Add .versionbot/CHANGELOG.yml for nested changelogs
                       hash: 9394a3215678277779fcc9de4f87a440206fa221
-                      body: ''
+                      body: ""
                       footer:
                         Change-type: patch
                         change-type: patch
@@ -302,70 +324,66 @@
                   date: 2020-07-13T13:04:22.398Z
                 - commits:
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: minor
                       hash: bd8b1070a59c5ee99b861daeb47dc61c327a11ef
                       subject: Update balena-auth to 4.x and balena-request to 11.x
-                  date: '2020-07-06T10:27:12Z'
+                  date: 2020-07-06T10:27:12Z
                   version: balena-pine-12.1.0
                 - commits:
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                       hash: 4723949cdd1999cefcd35cab2163b3a0ce3b7135
                       subject: Use typescript import helpers
-                  date: '2020-07-03T18:44:27Z'
+                  date: 2020-07-03T18:44:27Z
                   version: balena-pine-12.0.1
                 - commits:
                     - author: Thodoris Greasidis
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                         signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                       hash: 1ba597dfd1d59a00b8c97ee3c5e53f33a20ed0d6
                       subject: Stop actively supporting node 8
                     - author: Thodoris Greasidis
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                         signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                       hash: 76758e6a1e6f3663fc93e3805e30887b8cf35704
                       subject: Convert to async await
                     - author: Thodoris Greasidis
-                      body: ''
+                      body: ""
                       footers:
                         change-type: minor
                         signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                       hash: b7d70d9a5818dad1e5ee2671f6ba7ce3b6b88f86
                       subject: Add balenaCI repo.yml
                     - author: Thodoris Greasidis
-                      body: ''
+                      body: ""
                       footers:
                         signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                       hash: 3b5a18e6165a5968f222a01af85453eea3e132a9
-                      subject: >-
-                        karma.conf.js: Combine declaration & assignment of
-                        karmaConfig
+                      subject: "karma.conf.js: Combine declaration & assignment of karmaConfig"
                     - author: Thodoris Greasidis
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                         signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                       hash: 3841722fe089f0754ea3d4c372ec9f43cc870895
                       subject: Bump @balena/lint to v5
                     - author: Thodoris Greasidis
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                         signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                       hash: 1e6cfddc1de158cd3f16b9051cec8496f6b36f8a
-                      subject: >-
-                        Drop getPine() in favor of an es6 export of the
-                        BalenaPine class
+                      subject: Drop getPine() in favor of an es6 export of the BalenaPine class
                     - author: Thodoris Greasidis
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                         signed-off-by: Thodoris Greasidis <thodoris@balena.io>
@@ -377,34 +395,31 @@
                         change-type: major
                         signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                       hash: 979466bb4908dd4d3f22737ac13de79ac0e30899
-                      subject: >-
-                        Bump to pinejs-client v6 which requires es2015 & drops
-                        Bluebird promises
-                  date: '2020-06-26T15:23:48Z'
+                      subject: Bump to pinejs-client v6 which requires es2015 & drops Bluebird
+                        promises
+                  date: 2020-06-26T15:23:48Z
                   version: balena-pine-12.0.0
                 - commits:
                     - author: Thodoris Greasidis
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                         signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                       hash: 3f68368659c8424995daa2d2223152a8779ee0c3
                       subject: Convert karma.conf to js
                     - author: Thodoris Greasidis
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                         signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                       hash: 02eda53ee6fad3b2409604f483e12a54490f0f77
                       subject: Bump balena-config-karma to v3
-                  date: '2020-06-15T13:15:02Z'
+                  date: 2020-06-15T13:15:02Z
                   version: balena-pine-11.2.1
                 - commits:
-                    - subject: >-
-                        Switch from randomstring to uuid for generating device
-                        uuids
+                    - subject: Switch from randomstring to uuid for generating device uuids
                       hash: 596a76abcf0a76aef93d191e4c59b939701c80b8
-                      body: ''
+                      body: ""
                       footer:
                         Change-type: minor
                         change-type: minor
@@ -414,7 +429,7 @@
                 - commits:
                     - subject: Add .versionbot/CHANGELOG.yml for nested changelogs
                       hash: 7444f4ba2538180a5c75fa5f62de6f395ae28ba7
-                      body: ''
+                      body: ""
                       footer:
                         Change-type: patch
                         change-type: patch
@@ -423,60 +438,60 @@
                   date: 2020-07-13T13:03:45.818Z
                 - commits:
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       hash: 8cfa23ebbe2915b2f37730972cf104cb47f68c65
                       subject: Convert to type checked javascript
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: 0f3e9d26f375554f793dd632b94f33e3ee88933b
                       subject: Drop callback interface in favor of promise interface
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: 67d46678e910c2c8b11f417fa40d00781a1a3905
                       subject: Switch to a named export
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: faa9edc73cf243acd2abe1532e64aab8303031b5
                       subject: Convert to typescript
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: 9e5bdbeaee325c8a523c8498ef023baeb49ef7c1
                       subject: Update to typed-error 3.x
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: 27e78f2ea3f1a059a9fb2ba43dff55f32b0b2b4a
                       subject: Switch to returning native promises
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: dc21eb20dba1a977e74ffadbece66720ced4c529
                       subject: Update to balena-request 11.x
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       hash: f4008dad3de415cc25987268b387848fc3ed1200
                       subject: Use typescript import helpers
-                  date: '2020-07-06T18:11:23Z'
+                  date: 2020-07-06T18:11:23Z
                   version: balena-register-device-7.0.0
                 - commits:
                     - author: Cameron Diver
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                         signed-off-by: Cameron Diver <cameron@balena.io>
                       hash: effa651684318e8b1e336058515f467be02a4de4
                       subject: Export ApiError
-                  date: '2020-05-26T13:07:26Z'
+                  date: 2020-05-26T13:07:26Z
                   version: balena-register-device-6.1.6
                 - commits:
                     - author: Thodoris Greasidis
@@ -487,43 +502,42 @@
                         change-type: patch
                       hash: d2b9af51ae9714bc076d41a1f980ba019cf9e66a
                       subject: Convert tests to js
-                  date: '2020-05-21T14:46:17Z'
+                  date: 2020-05-21T14:46:17Z
                   version: balena-register-device-6.1.5
                 - commits:
                     - author: Cameron Diver
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                         signed-off-by: Cameron Diver <cameron@balena.io>
                       hash: f2be03b8cafe3dbfda30b9abf9cb7ec5a73aff0b
                       subject: Install typed-error v2
-                  date: '2020-05-21T11:06:32Z'
+                  date: 2020-05-21T11:06:32Z
                   version: balena-register-device-6.1.4
                 - commits:
                     - author: Miguel Casqueira
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                         signed-off-by: Miguel Casqueira <miguel@balena.io>
                       hash: bc79dbddf3e57081e9bb71e348c9ae6375c17ffc
                       subject: Extend API exception to include full response object
-                  date: '2020-05-20T12:23:42Z'
+                  date: 2020-05-20T12:23:42Z
                   version: balena-register-device-6.1.3
                 - commits:
                     - author: Thodoris Greasidis
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
-                        see: >-
-                          https://www.flowdock.com/app/rulemotion/r-supervisor/threads/KkFyAM4y7FbvbEOMtnoHdkCcz7p
+                        see: https://www.flowdock.com/app/rulemotion/r-supervisor/threads/KkFyAM4y7FbvbEOMtnoHdkCcz7p
                       hash: a6677fab4254f1f3a303ff4b8bdabcb3f2f631db
                       subject: Update mocha to fix node v12 deprecation warning
-                  date: '2020-05-20T10:59:05Z'
+                  date: 2020-05-20T10:59:05Z
                   version: balena-register-device-6.1.2
                 - commits:
                     - subject: Fix body overwriting on nodejs
                       hash: 432ee302c8c55e629f4915146d4d1c7388d6b01b
-                      body: ''
+                      body: ""
                       footer:
                         Change-type: patch
                         change-type: patch
@@ -533,7 +547,7 @@
                 - commits:
                     - subject: Add .versionbot/CHANGELOG.yml for nested changelogs
                       hash: 6cdf460919b09a3cfe49bdfdfc1b1157117cc507
-                      body: ''
+                      body: ""
                       footer:
                         Change-type: patch
                         change-type: patch
@@ -542,104 +556,94 @@
                   date: 2020-07-13T12:58:43.704Z
                 - commits:
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                       hash: 4bcb7ac6741cdb115cba767920f6264d255322f3
                       subject: Fix tslib dependency
-                  date: '2020-07-06T10:51:52Z'
+                  date: 2020-07-06T10:51:52Z
                   version: balena-request-11.0.2
                 - commits:
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                       hash: 079bfeece6bf01b0ebb9e12515f1304e51fcb068
-                      subject: >-
-                        Fix passing baseUrl to refreshToken if the request uses
-                        an absolute url
-                  date: '2020-07-03T21:42:07Z'
+                      subject: Fix passing baseUrl to refreshToken if the request uses an absolute url
+                  date: 2020-07-03T21:42:07Z
                   version: balena-request-11.0.1
                 - commits:
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: f20a78343dae178d7bbe42f199cfdfcf017faaa0
                       subject: Convert to type checked javascript
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: 85d3e6df1b23af26275ab516d8cd0ed8ab3b08b5
                       subject: Switch to returning native promises
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: c53ca904ff5950271a5d8ed7911c04efc92358e6
                       subject: Drop support for nodejs < 10
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: 072299f337bef7cd3e23d70c61cbc1cf8ab04df5
                       subject: Update balena-auth to 4.x
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                       hash: 812054063a073816af2b405b20c5fcec7fd43d69
                       subject: Remove rindle dependency
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: a8db723a33e6c912de25581f29796bfc5c7040da
                       subject: Update fetch-ponyfill to 6.x
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       hash: b3851fc526d94df3da1b4e768489eb91f4aa5d91
-                      subject: >-
-                        Remove proxy tests as global-tunnel-ng only supports
-                        nodejs < 10.16.0
+                      subject: Remove proxy tests as global-tunnel-ng only supports nodejs < 10.16.0
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: 0f67d2157ff70c8cfada7b6359ba4b58aeeacf3c
                       subject: Switch to a named export
                     - author: Pagan Gazzard
-                      body: ''
+                      body: ""
                       hash: be34df9a401b1155e8b6a5ead9604fbd86164662
                       subject: Use typescript import helpers
                     - author: Thodoris Greasidis
-                      body: ''
+                      body: ""
                       footers:
                         change-type: patch
                         signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                       hash: 403418796d1505c9567396e06f221d1e959d4115
-                      subject: >-
-                        Bump balena-config-karma & convert karma.conf.coffee to
-                        js
+                      subject: Bump balena-config-karma & convert karma.conf.coffee to js
                     - author: Thodoris Greasidis
-                      body: ''
+                      body: ""
                       footers:
                         change-type: major
                       hash: 25e8293b8ed3df3c80581903ab56a42c3e41babc
-                      subject: >-
-                        Change the browser request timeout error to be
-                        consistent with node
-                  date: '2020-07-03T19:12:04Z'
+                      subject: Change the browser request timeout error to be consistent with node
+                  date: 2020-07-03T19:12:04Z
                   version: balena-request-11.0.0
-            - subject: >-
-                **BREAKING** billing: Make the organization parameter fist &
-                required
+            - subject: "**BREAKING** billing: Make the organization parameter fist & required"
               hash: 5d4a57a00c2cfbd3229e41f0da7f6d911ad090c3
-              body: ''
+              body: ""
               footer:
-                Resolves: '#925'
-                resolves: '#925'
+                Resolves: "#925"
+                resolves: "#925"
                 Change-type: major
                 change-type: major
                 Signed-off-by: Thodoris Greasidis <thodoris@balena.io>
@@ -649,27 +653,25 @@
           version: balena-sdk-15.0.0
           date: 2020-07-15T16:23:57.737Z
         - commits:
-            - subject: >-
-                DeviceWithServiceDetails: preserve the image_install &
-                gateway_downloads
+            - subject: "DeviceWithServiceDetails: preserve the image_install &
+                gateway_downloads"
               hash: ab3a5c2e67b4dd51643018a6d717b9737fb94583
-              body: ''
+              body: ""
               footer:
-                Connects-to: '#923'
-                connects-to: '#923'
+                Connects-to: "#923"
+                connects-to: "#923"
                 Change-type: minor
                 change-type: minor
                 Signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                 signed-off-by: Thodoris Greasidis <thodoris@balena.io>
               author: Thodoris Greasidis
-            - subject: >-
-                typings: Deprecate DeviceWithImageInstalls in favor of the
-                Device type
+            - subject: "typings: Deprecate DeviceWithImageInstalls in favor of the Device
+                type"
               hash: ffa474f7770500b9ff9181c0fc6f24ed48abd6fc
-              body: ''
+              body: ""
               footer:
-                Connects-to: '#923'
-                connects-to: '#923'
+                Connects-to: "#923"
+                connects-to: "#923"
                 Change-type: minor
                 change-type: minor
                 Signed-off-by: Thodoris Greasidis <thodoris@balena.io>
@@ -680,7 +682,7 @@
         - commits:
             - subject: Fix is_private typings for device type
               hash: 7d7751dc8ebf107ced936737c232e72867c37c93
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -692,7 +694,7 @@
         - commits:
             - subject: Add an organization parameter to all billing methods
               hash: 02c099fb1697c0b159bde34dc0976cb75b821a0c
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
@@ -702,9 +704,9 @@
           version: balena-sdk-14.7.0
           date: 2020-07-14T04:54:13.999Z
         - commits:
-            - subject: 'typings: Add ApplicationHostedOnApplication'
+            - subject: "typings: Add ApplicationHostedOnApplication"
               hash: f17c9531a006409095d77d971d66faa554f90e1c
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
@@ -713,7 +715,7 @@
               author: Thodoris Greasidis
             - subject: typings Add RecoveryTwoFactor
               hash: b2260a1b9dd7c4e3c24c132bbb7322fe12ec52ba
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
@@ -723,9 +725,9 @@
           version: balena-sdk-14.6.0
           date: 2020-07-13T13:49:52.280Z
         - commits:
-            - subject: 'Tests: remove bluebird usage'
+            - subject: "Tests: remove bluebird usage"
               hash: 3430f52b1c4ca56bc833552d23054e8f07d16022
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -733,45 +735,45 @@
           version: balena-sdk-14.5.1
           date: 2020-07-10T11:26:46.646Z
         - commits:
-            - subject: 'tests/integration/setup: Convert to TypeScript'
+            - subject: "tests/integration/setup: Convert to TypeScript"
               hash: 02440521f6a164c8369c3a74e2bba7cc95a567e3
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
                 Signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                 signed-off-by: Thodoris Greasidis <thodoris@balena.io>
               author: Thodoris Greasidis
-            - subject: 'typings/ImageInstall: Deprecate the image field'
+            - subject: "typings/ImageInstall: Deprecate the image field"
               hash: b38263a46642cc37320b5c0caff5c021f788d2d2
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
                 Signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                 signed-off-by: Thodoris Greasidis <thodoris@balena.io>
               author: Thodoris Greasidis
-            - subject: 'typings/ImageInstall: Add the `installs__image` field'
+            - subject: "typings/ImageInstall: Add the `installs__image` field"
               hash: cca2b887525f60e4c6ccb5d5438739601e5d3ab3
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
                 Signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                 signed-off-by: Thodoris Greasidis <thodoris@balena.io>
               author: Thodoris Greasidis
-            - subject: 'typings: Add typings for the ReleaseImage'
+            - subject: "typings: Add typings for the ReleaseImage"
               hash: 3582a54008fbd8142e8f759fb14c119416f2d296
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
                 Signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                 signed-off-by: Thodoris Greasidis <thodoris@balena.io>
               author: Thodoris Greasidis
-            - subject: 'typings/ImageInstall: Add the missing device property'
+            - subject: "typings/ImageInstall: Add the missing device property"
               hash: 6af02f848a44b35c63a597b7bc2baafadd6c0099
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
@@ -780,7 +782,7 @@
               author: Thodoris Greasidis
             - subject: Convert all remaining tests away from coffeescript
               hash: d7e7a5f20995e6ba3616ff99e97b588882e6c08d
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -788,23 +790,23 @@
           version: balena-sdk-14.5.0
           date: 2020-07-09T22:17:25.239Z
         - commits:
-            - subject: 'Tests: improve typing for access to private SDK os methods'
+            - subject: "Tests: improve typing for access to private SDK os methods"
               hash: 95c8c195f5a1b5b253c8bf2d893571893f17e7a5
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
               author: Pagan Gazzard
-            - subject: 'Tests: improve typing of tag helpers'
+            - subject: "Tests: improve typing of tag helpers"
               hash: 34546af679431e1241f1c0bae83d82e32ad42780
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
               author: Pagan Gazzard
-            - subject: 'Tests: import BalenaSDK types directly'
+            - subject: "Tests: import BalenaSDK types directly"
               hash: 1f3081d8ff5c04f0ee1ca261d878b4935b0301cc
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -812,9 +814,9 @@
           version: balena-sdk-14.4.2
           date: 2020-07-09T10:05:36.792Z
         - commits:
-            - subject: 'Tests: merge multiple application deletions into a single call'
+            - subject: "Tests: merge multiple application deletions into a single call"
               hash: 381e31bcfeea3cb13d7c3d904679dc9671ca886a
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -824,63 +826,63 @@
         - commits:
             - subject: Improve typings for `sdk.pine.post`
               hash: 406afd7ea4631cf322c6715493c4e8d8b00f478f
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
               author: Pagan Gazzard
             - subject: Improve typings for `sdk.request`
               hash: 078d23f0a6e1c8d3900fad3da874c5706ced6d3d
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
               author: Pagan Gazzard
             - subject: Improve typings for `models.device.getOsVersion`
               hash: 2e95f23bea27f8d5c7920120a3b6388ad1c4c1a0
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
               author: Pagan Gazzard
             - subject: Improve typings for `models.device.lastOnline`
               hash: 8fa73ca367406d9938191b0b999a5f18ce09b55d
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
               author: Pagan Gazzard
             - subject: Fix typings for `models.device.getMACAddresses`
               hash: 662e589d57ddc511f442e3073830225a00f6af9b
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
               author: Pagan Gazzard
             - subject: Fix typings for `models.device.getLocalIPAddresses`
               hash: adfb96f61a48258464e43212eadcef6fc13ddddb
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
               author: Pagan Gazzard
             - subject: Add typings for `models.application.getDashboardUrl`
               hash: 9b7a0e2fe3c61a0bb6ef46831d1984a73c530c69
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
               author: Pagan Gazzard
-            - subject: 'Device model: last_connectivity_event and os_version can be null'
+            - subject: "Device model: last_connectivity_event and os_version can be null"
               hash: cfac5975900da67c2784b9647f22ea2d21db5455
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
               author: Pagan Gazzard
             - subject: Improve typings for `models.device.getLocalModeSupport`
               hash: 15211666ad24e607ceec24026806623d62627c0d
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -890,7 +892,7 @@
         - commits:
             - subject: Minimize bluebird sugar usage
               hash: 509364c5b73b3cee6d86ecd06055d0bb4e252787
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -900,7 +902,7 @@
         - commits:
             - subject: Add type checking for tests
               hash: d54fbcafc52fbb0b334779d9a35438e8a6577514
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -908,9 +910,9 @@
           version: balena-sdk-14.3.2
           date: 2020-07-07T17:20:04.126Z
         - commits:
-            - subject: 'Tests: cache device type lookup'
+            - subject: "Tests: cache device type lookup"
               hash: 1c331a8be1cbefe7184e56a6621963b3c9349e7b
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -918,32 +920,26 @@
           version: balena-sdk-14.3.1
           date: 2020-07-07T15:50:51.973Z
         - commits:
-            - subject: >-
-                typings: Export pine variant w/ a mandatory $select on get
-                requests
+            - subject: "typings: Export pine variant w/ a mandatory $select on get requests"
               hash: f8cfe069b7eaf0e45bbb9ca9b2e066c2327d3a7e
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
-                See: >-
-                  https://github.com/balena-io/balena-ui/pull/3829/files#r450310702
-                see: >-
-                  https://github.com/balena-io/balena-ui/pull/3829/files#r450310702
+                See: https://github.com/balena-io/balena-ui/pull/3829/files#r450310702
+                see: https://github.com/balena-io/balena-ui/pull/3829/files#r450310702
                 Signed-off-by: Thodoris Greasidis <thodoris@balena.io>
                 signed-off-by: Thodoris Greasidis <thodoris@balena.io>
               author: Thodoris Greasidis
           version: balena-sdk-14.3.0
           date: 2020-07-07T14:55:53.014Z
         - commits:
-            - subject: >-
-                Remove `this.skip` usage as a faster workaround to afterEach
-                skipping
+            - subject: Remove `this.skip` usage as a faster workaround to afterEach skipping
               hash: f930ce282ae650b443873e3df67ca7f0514b37c1
-              body: ''
+              body: ""
               footer:
-                See: 'https://github.com/mochajs/mocha/issues/3740'
-                see: 'https://github.com/mochajs/mocha/issues/3740'
+                See: https://github.com/mochajs/mocha/issues/3740
+                see: https://github.com/mochajs/mocha/issues/3740
                 Change-type: patch
                 change-type: patch
               author: Pagan Gazzard
@@ -952,7 +948,7 @@
         - commits:
             - subject: Improve internal typings by avoiding some `any` cases
               hash: c28af087f9b8e4ae805ee638438f4dd6116d0cdb
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -962,7 +958,7 @@
         - commits:
             - subject: Include typings for all lazy loaded requires
               hash: d101fa2c79e42bd36adde052abe96a15dd5c0373
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -972,30 +968,28 @@
         - commits:
             - subject: Simplify balena-request custom typings
               hash: 7945799f798c7f3b1943833b6e3dbf7e6ae70b18
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
               author: Pagan Gazzard
             - subject: Use import type for declaration imports
               hash: 6b1e790a16959d9e0a7d4675d83f518de2cc978d
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
               author: Pagan Gazzard
             - subject: Simplify balena-pine custom typings
               hash: 5398e0b09cd78a0025eef0fc58ca5578f81b6be3
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
               author: Pagan Gazzard
-            - subject: >-
-                Import balena-sdk type declarations via import type and not
-                direct path
+            - subject: Import balena-sdk type declarations via import type and not direct path
               hash: 094569deadef0d406be54d26adc632c4c44b2ec5
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -1005,7 +999,7 @@
         - commits:
             - subject: Use typescript import helpers
               hash: b24780253825c734a73d272e8a8e1054622f8c14
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -1015,7 +1009,7 @@
         - commits:
             - subject: Drop dtslint in favor of plain @ts-expect-error
               hash: 1d2c1ffda6b6e98e3059b6ea12aa7b0da47dc28e
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -1024,7 +1018,7 @@
               author: Thodoris Greasidis
             - subject: Enable strict checks for the typing tests
               hash: 5819a86d34586f0c63cae79abf8c9bb61ed9617f
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -1036,7 +1030,7 @@
         - commits:
             - subject: Standardize bluebird naming as `Bluebird`
               hash: d4a1043a33f41c7463170629372407bc2f69ba20
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -1063,9 +1057,9 @@
           version: balena-sdk-14.2.2
           date: 2020-07-03T11:13:07.207Z
         - commits:
-            - subject: 'model: Add build_environment_variable'
+            - subject: "model: Add build_environment_variable"
               hash: 230c5437daa659da7024123cc28ed63112d63120
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -1077,7 +1071,7 @@
         - commits:
             - subject: Add typings for plans & subscriptions
               hash: 71105ed9300a7977663a8751a5dca296e6586b3b
-              body: ''
+              body: ""
               footer:
                 Change-type: minor
                 change-type: minor
@@ -1089,7 +1083,7 @@
         - commits:
             - subject: Add .versionbot/CHANGELOG.yml for nested changelogs
               hash: 8852f1bc2f12ccacddd4b5a6b4dad4c0b4fe231d
-              body: ''
+              body: ""
               footer:
                 Change-type: patch
                 change-type: patch
@@ -1098,200 +1092,199 @@
           date: 2020-08-04T10:48:36.236Z
         - commits:
             - author: Alexis Svinartchouk
-              body: ''
+              body: ""
               footers:
                 change-type: patch
               hash: 28cd068c8d1819a3579736252175ea6dc99da131
               subject: Stop using lodash
             - author: Alexis Svinartchouk
-              body: ''
+              body: ""
               footers:
                 change-type: major
               hash: 3e30760774133a283095ee6ad5c1b5f36c712714
-              subject: 'Simplify, only leave the interact function'
+              subject: Simplify, only leave the interact function
             - author: Alexis Svinartchouk
-              body: ''
+              body: ""
               footers:
                 change-type: patch
               hash: 21c9cf9a2e1649c391fdfcfbe1cd26c197dec5a9
               subject: Convert to typescript
             - author: Alexis Svinartchouk
-              body: ''
+              body: ""
               footers:
                 change-type: patch
               hash: 72c28859d4f9782ed8ca3f6b6d262b16d8a027b9
               subject: lint on pre-commit
             - author: Alexis Svinartchouk
-              body: ''
+              body: ""
               footers:
                 change-type: patch
               hash: 8da6c4307cf67a32ce4887b4a7a3ab8643518821
               subject: Rename resin -> balena
             - author: Alexis Svinartchouk
-              body: ''
+              body: ""
               footers:
                 change-type: patch
               hash: 9150c6c0fee21e33beef0ddaeea56ad1ce175c96
               subject: Replace wary with mocha
-          date: '2020-07-30T15:41:13Z'
+          date: 2020-07-30T15:41:13Z
           version: balena-image-fs-7.0.0
         - commits:
             - author: Alexis Svinartchouk
-              body: ''
+              body: ""
               footers:
                 change-type: major
               hash: 2596a1c286adb8ecb78b113ff2b17be09b0f0945
               subject: Update file-disk to ^7
-          date: '2020-07-24T14:45:35Z'
+          date: 2020-07-24T14:45:35Z
           version: balena-image-fs-6.0.0
   version: 4.1.0
   date: 2020-08-04T12:40:25.898Z
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: major
       hash: d787399c40211d1f300dab5b86885dbad6062cab
       subject: Update to balena-sdk 14.x
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: major
       hash: f8e9ce1e0d0539211de36cbc295215c702595ea1
       subject: Update to generating es2018
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: major
       hash: 8a9803555ea2b7711909982ce4cba0dcde552dd8
       subject: Switch to returning native promises
-  date: '2020-06-30T16:57:07Z'
+  date: 2020-06-30T16:57:07Z
   version: 4.0.0
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: major
       hash: b04550dcd17eac65f65db3f62282d52b64d9db18
       subject: Switch to returning native promises
-  date: '2020-06-30T16:43:45Z'
+  date: 2020-06-30T16:43:45Z
   version: 3.0.0
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: 8b2183e9e8007b167be3e29b0735dfbfe402840c
       subject: Update dependencies and repo links
-  date: '2020-01-24T18:26:34Z'
+  date: 2020-01-24T18:26:34Z
   version: 2.1.1
 - commits:
     - author: Thodoris Greasidis
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: b4297a8711c7ddd0f452b684731548b271894073
       subject: Update the README for the balena rename
     - author: Thodoris Greasidis
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: 0b7869c32d74de39a547395264a6324fc1e69ba5
       subject: Add a prepack step to be balenaCI compliant
     - author: Thodoris Greasidis
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: 1ceb915449d36672dad64dcec75ee2b3159790f6
       subject: Remove the build output from the git repo
     - author: Thodoris Greasidis
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: 503d526d73438c22c633bc1894e57ba6532f932e
       subject: Only publish the build & the standard module files
     - author: Thodoris Greasidis
-      body: ''
+      body: ""
       footers:
         change-type: minor
-        depends-on: 'https://github.com/balena-io/balena-sdk/issues/752'
-        hq: 'https://github.com/balena-io/balena/pull/1740'
-        resolves: '#14'
+        depends-on: https://github.com/balena-io/balena-sdk/issues/752
+        hq: https://github.com/balena-io/balena/pull/1740
+        resolves: "#14"
       hash: cc37bb2892d14b9eb6a79f1fb545b43c98beee38
       subject: Add support for private device types
-  date: '2019-10-16T13:21:35Z'
+  date: 2019-10-16T13:21:35Z
   version: 2.1.0
 - commits:
     - author: Gergely Imreh
-      body: ''
+      body: ""
       footers:
         change-type: patch
         signed-off-by: Gergely Imreh <gergely@balena.io>
       hash: 4a3572d971225eff1dd1bc8753a2e5612fd7ba38
-      subject: 'dependencies: update to build with Node 12'
+      subject: "dependencies: update to build with Node 12"
     - author: Gergely Imreh
-      body: ''
+      body: ""
       footers:
         change-type: patch
         signed-off-by: Gergely Imreh <gergely@balena.io>
       hash: 8ef6de115775369a5ea1f253634041bbed0254a8
       subject: Add changes to generated files too
     - author: Gergely Imreh
-      body: ''
+      body: ""
       footers:
         change-type: patch
         signed-off-by: Gergely Imreh <gergely@balena.io>
       hash: 7736bc67a4de60e236546f3b0b8d72390e85276a
-      subject: >-
-        CI: Update CI setup for travis and remove appveyor (not seem to be in
-        use)
-  date: '2019-05-29T12:08:18Z'
+      subject: "CI: Update CI setup for travis and remove appveyor (not seem to be in
+        use)"
+  date: 2019-05-29T12:08:18Z
   version: 2.0.2
 - commits:
     - author: Tim Perry
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: b4e70a1076484b42a95a68ef1db5ff5b9a921f55
       subject: Rename the package itself to balena-config-json
-  date: '2018-10-29T20:51:33Z'
+  date: 2018-10-29T20:51:33Z
   version: 2.0.1
 - commits:
     - author: Tim Perry
-      body: ''
+      body: ""
       footers:
         change-type: major
       hash: e056df4c8b12170ba7df8f8db7434c9c57688def
       subject: Rename everything 'resin' to 'balena'
-  date: '2018-10-29T20:08:04Z'
+  date: 2018-10-29T20:08:04Z
   version: 2.0.0
 - commits:
     - author: Tim Perry
-      body: ''
+      body: ""
       footers:
         signed-off-by: Tim Perry <tim@resin.io>
       hash: 5fd38ade695e202c62acfdff3f7f8216e79321a2
       subject: v1.0.3
     - author: Tim Perry
-      body: ''
+      body: ""
       footers:
         change-type: patch
         signed-off-by: Tim Perry <tim@resin.io>
       hash: 52c1359cade5283b442119beea41f806a3fe3227
-      subject: 'Update resin-image-fs, fixing issues with TX2 images'
+      subject: Update resin-image-fs, fixing issues with TX2 images
     - author: Tim Perry
-      body: ''
+      body: ""
       footers:
         signed-off-by: Tim Perry <tim@resin.io>
       hash: 22cda08ca3959bbf2513a8de1e2b19c37702c509
-      subject: 'Update tests to test against Node 6, 8 and 10'
+      subject: Update tests to test against Node 6, 8 and 10
     - author: Tim Perry
-      body: ''
+      body: ""
       footers:
         signed-off-by: Tim Perry <tim@resin.io>
       hash: 1f890f163e9825a70dbeebb9d296e3d87cd3479b
       subject: Add a test for the new format partition manifest
-  date: '2018-07-31T11:37:10Z'
+  date: 2018-07-31T11:37:10Z
   version: 1.0.3
 - commits:
     - author: Juan Cruz Viotti
@@ -1303,13 +1296,13 @@
         the API, so when this change was introduced, this module suddenly
         started breaking.
       footers:
-        see: 'https://github.com/resin-io/resin-config-json/pull/4'
+        see: https://github.com/resin-io/resin-config-json/pull/4
         signed-off-by: Juan Cruz Viotti <jviotti@openmailbox.org>
       hash: efcce7cbccc5c6bce188b9946bd9d8f3fe4273d9
       subject: Update raspberrypi.img to contain config.json in the first partition
     - author: Tim Perry
-      body: ''
+      body: ""
       hash: 678319bbc34dccc173c4f6d56e7fd072fa67f766
       subject: Move to preconfigured Resin-SDK
-  date: '2017-01-19T16:29:58Z'
+  date: 2017-01-19T16:29:58Z
   version: 1.0.2
