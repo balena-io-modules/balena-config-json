@@ -37,9 +37,9 @@ export async function downloadOS(
 	console.error(`[info] Downloading balenaOS to "${imgPath}"...`);
 	let lastPct = 0;
 	let lastPrintedPct = 0;
-	const stream: NodeJS.ReadableStream = await sdk.models.os.download(
+	const stream: NodeJS.ReadableStream = await sdk.models.os.download({
 		deviceType,
-	);
+	});
 	const onProgress = (state) => {
 		const pct = Math.round(state.percentage || 0);
 		if (pct <= lastPct) {
