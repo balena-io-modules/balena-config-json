@@ -32,8 +32,8 @@ const quickTestDeviceTypes = [
 	'intel-nuc', // very popular with partition number 1, flasher image
 	// Intel-Edison is an odd one, needs unzipping the downloaded image to extract
 	// 'resin-image-edison.hddimg', and that image contains an empty partition table!
-	'intel-edison',
 	'jetson-xavier', // largest partition number, 37
+	'surface-go', // old image with .prod filename format
 ];
 
 describe('balena-config-json', function () {
@@ -134,13 +134,14 @@ async function getImageForDeviceType(sdk: BalenaSDK, deviceType: string) {
 	await fs.mkdir(cacheDir, { recursive: true });
 	const imageFiles = await fs.readdir(cacheDir);
 	const prefix = `balenaOS-${deviceType}-`;
-	// image file format: balenaOS-n310-tx2-2.56.0+rev4.prod.img
+	// image file format: balenaOS-jetson-xavier-6.0.13.img
+	// some older images still include '.prod', like balenaOS-surface-go-2.83.18+rev1.prod.img
 	const imgFile = imageFiles.find(
 		(name) =>
 			name.startsWith(prefix) &&
 			name
 				.substring(prefix.length)
-				.match(/\d+\.\d+\.\d+(\+rev\d+)?\.(dev|prod)\.img/),
+				.match(/\d+\.\d+\.\d+(\+rev\d+)?(\.prod)?\.img/),
 	);
 	let imgPath: string;
 	if (imgFile) {
@@ -182,52 +183,42 @@ const expectedConfigBySlug: {
 				};
 		  };
 } = {
-	'aio-3288c': { config: { partition: { primary: 1 } } },
-	'am571x-evm': { config: { partition: { primary: 1 } } },
-	'apalis-imx6q': { config: { partition: { primary: 1 } } },
-	artik10: { config: { partition: { primary: 1 } } },
-	artik5: { config: { partition: { primary: 1 } } },
-	artik530: { config: { partition: { primary: 1 } } },
-	artik533s: { config: { partition: { primary: 1 } } },
-	artik710: { config: { partition: { primary: 1 } } },
+	'advantech-ecu1370': { config: { partition: { primary: 1 } } },
 	'astro-tx2': { config: { partition: { primary: 1 } } },
 	'asus-tinker-board': { config: { partition: { primary: 1 } } },
 	'asus-tinker-board-s': { config: { partition: { primary: 1 } } },
 	'asus-tinker-edge-t': { config: { partition: { primary: 1 } } },
 	'bananapi-m1-plus': { config: { partition: { primary: 1 } } },
-	'beagleboard-xm': { config: { partition: { primary: 1 } } },
 	'beaglebone-black': { config: { partition: { primary: 1 } } },
 	'beaglebone-green': { config: { partition: { primary: 1 } } },
 	'beaglebone-green-gateway': { config: { partition: { primary: 1 } } },
 	'beaglebone-green-wifi': { config: { partition: { primary: 1 } } },
 	'beaglebone-pocket': { config: { partition: { primary: 1 } } },
-	'blackboard-tx2': { config: { partition: { primary: 1 } } },
+	beagleplay: { config: { partition: { primary: 1 } } },
+	'bluechiptechnology-db1': { config: { partition: { primary: 7 } } },
+	'bluechiptechnology-tm3': { config: { partition: { primary: 1 } } },
 	'ccimx8x-sbc-pro': { config: { partition: { primary: 1 } } },
 	'cl-som-imx8': { config: { partition: { primary: 1 } } },
-	'colibri-imx6dl': { config: { partition: { primary: 1 } } },
 	'coral-dev': { config: { partition: { primary: 1 } } },
-	'cybertan-ze250': { config: { partition: { primary: 1 } } },
-	edge: undefined,
 	'etcher-pro': { config: { partition: { primary: 1 } } },
-	fincm3: { config: { partition: { primary: 1 } } },
-	'firefly-rk3288': { config: { partition: { primary: 1 } } },
-	'floyd-nano': { config: { partition: 12 } },
-	generic: undefined, // alias to genericx86-64-ext ?
 	'generic-aarch64': undefined,
+	'generic-amd64': { config: { partition: { primary: 1 } } },
 	'genericx86-64-ext': { config: { partition: { primary: 1 } } },
-	hummingboard: { config: { partition: { primary: 1 } } },
 	'imx6ul-var-dart': { config: { partition: { primary: 1 } } },
 	'imx7-var-som': { config: { partition: { primary: 1 } } },
 	'imx8m-var-dart': { config: { partition: { primary: 1 } } },
 	'imx8mm-var-dart': { config: { partition: { primary: 1 } } },
-	'intel-edison': { config: { image: 'resin-image-edison.hddimg' } },
 	'intel-nuc': { config: { partition: { primary: 1 } } },
 	'iot-gate-imx8': { config: { partition: { primary: 1 } } },
-	iot2000: { config: { partition: { primary: 1 } } },
+	'jetson-agx-orin-devkit': { config: { partition: { primary: 6 } } },
+	'jetson-agx-orin-devkit-64gb': { config: { partition: { primary: 1 } } },
 	'jetson-nano': { config: { partition: 12 } },
 	'jetson-nano-2gb-devkit': { config: { partition: 14 } },
 	'jetson-nano-emmc': { config: { partition: 12 } },
-	'jetson-tx1': { config: { partition: { primary: 10 } } },
+	'jetson-orin-nano-devkit-nvme': { config: { partition: { primary: 1 } } },
+	'jetson-orin-nano-seeed-j3010': { config: { partition: { primary: 1 } } },
+	'jetson-orin-nx-seeed-j4012': { config: { partition: { primary: 1 } } },
+	'jetson-orin-nx-xavier-nx-devkit': { config: { partition: { primary: 1 } } },
 	'jetson-tx2': { config: { partition: { primary: 1 } } },
 	'jetson-tx2-nx-devkit': { config: { partition: { primary: 24 } } },
 	'jetson-xavier': { config: { partition: { primary: 37 } } },
@@ -237,25 +228,23 @@ const expectedConfigBySlug: {
 		config: { partition: { primary: 9 } },
 	},
 	'jn30b-nano': { config: { partition: 12 } },
-	kitra520: { config: { partition: { primary: 1 } } },
-	kitra710: { config: { partition: { primary: 1 } } },
-	'n310-tx2': { config: { partition: { primary: 1 } } },
+	'kontron-mx8mm': { config: { partition: { primary: 1 } } },
 	'n510-tx2': { config: { partition: { primary: 1 } } },
 	'nanopc-t4': { config: { partition: { primary: 1 } } },
 	'nanopi-neo-air': { config: { partition: { primary: 1 } } },
-	nitrogen6x: { config: { partition: { primary: 1 } } },
+	'nanopi-r2c': { config: { partition: 4 } },
+	'nanopi-r2s': { config: { partition: 4 } },
 	nitrogen8mm: { config: { partition: { primary: 1 } } },
 	'npe-x500-m3': { config: { partition: { primary: 1 } } },
-	'odroid-c1': { config: { partition: { primary: 1 } } },
 	'odroid-xu4': { config: { partition: { primary: 1 } } },
 	'orange-pi-one': { config: { partition: { primary: 1 } } },
 	'orange-pi-zero': { config: { partition: { primary: 1 } } },
 	'orangepi-plus2': { config: { partition: { primary: 1 } } },
-	'orbitty-tx2': { config: { partition: { primary: 1 } } },
-	parallella: { config: { partition: { primary: 1 } } },
+	owa5x: { config: { partition: { primary: 1 } } },
 	'photon-nano': { config: { partition: 12 } },
 	'photon-tx2-nx': { config: { partition: { primary: 24 } } },
 	'photon-xavier-nx': { config: { partition: { primary: 9 } } },
+	'phyboard-lyra-am62xx-2': { config: { partition: { primary: 1 } } },
 	qemux86: { config: { partition: { primary: 1 } } },
 	'qemux86-64': { config: { partition: { primary: 1 } } },
 	'raspberry-pi': { config: { partition: { primary: 1 } } },
@@ -264,19 +253,19 @@ const expectedConfigBySlug: {
 	'raspberrypi3-64': { config: { partition: { primary: 1 } } },
 	'raspberrypi4-64': { config: { partition: { primary: 1 } } },
 	'raspberrypi400-64': { config: { partition: { primary: 1 } } },
+	raspberrypi5: { config: { partition: { primary: 1 } } },
 	'raspberrypicm4-ioboard': { config: { partition: { primary: 1 } } },
 	'revpi-connect': { config: { partition: { primary: 1 } } },
+	'revpi-connect-4': { config: { partition: { primary: 1 } } },
+	'revpi-connect-s': { config: { partition: { primary: 1 } } },
 	'revpi-core-3': { config: { partition: { primary: 1 } } },
 	'rockpi-4b-rk3399': { config: { partition: 4 } },
+	rockpro64: { config: { partition: 1 } },
 	skx2: { config: { partition: { primary: 1 } } },
 	'smarc-px30': { config: { partition: { primary: 1 } } },
 	'spacely-tx2': { config: { partition: { primary: 1 } } },
 	'surface-go': { config: { partition: { primary: 1 } } },
 	'surface-pro-6': { config: { partition: { primary: 1 } } },
-	ts4900: { config: { partition: { primary: 1 } } },
-	ts7700: { config: { partition: { primary: 4, logical: 1 } } },
 	'up-board': { config: { partition: { primary: 1 } } },
 	'var-som-mx6': { config: { partition: { primary: 1 } } },
-	'via-vab820-quad': { config: { partition: { primary: 1 } } },
-	'zynq-xz702': { config: { partition: { primary: 1 } } },
 };
