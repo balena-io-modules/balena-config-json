@@ -1,4 +1,18 @@
 - commits:
+    - subject: Use balena-image-fs getFsLabel() to read filesystem name for MBR
+      hash: 38cc709214b80cea8816e81769b7fd55c2b17dc9
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Ken Bannister <kb2ma@runbox.com>
+        signed-off-by: Ken Bannister <kb2ma@runbox.com>
+      author: Ken Bannister
+      nested: []
+  version: 4.2.2
+  title: ""
+  date: 2025-02-24T13:45:06.509Z
+- commits:
     - subject: Fixes for tests
       hash: 3129af229b7dc125553c7ad50391712bd343034d
       body: |
