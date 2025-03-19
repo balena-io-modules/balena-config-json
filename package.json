@@ -34,11 +34,11 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@balena/lint": "^6.1.1",
-    "@types/chai": "^4.2.22",
+    "@types/chai": "^5.0.0",
     "@types/mocha": "^9.0.0",
     "@types/yauzl": "^2.9.2",
     "balena-sdk": "^21.1.0",
-    "chai": "^4.3.4",
+    "chai": "^5.0.0",
     "jsdoc-to-markdown": "^6.0.1",
     "mocha": "^9.1.2",
     "typescript": "^4.4.3",
