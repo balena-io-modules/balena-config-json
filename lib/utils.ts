@@ -16,11 +16,7 @@ limitations under the License.
 
 import * as imagefs from 'balena-image-fs';
 import * as filedisk from 'file-disk';
-import type {
-	GetPartitionsResult,
-	GPTPartition,
-	MBRPartition,
-} from 'partitioninfo';
+import type { GetPartitionsResult } from 'partitioninfo';
 import { getPartitions } from 'partitioninfo';
 import { promisify } from 'util';
 
@@ -52,32 +48,35 @@ export async function getBootPartition(
 			if (!partitions?.length) {
 				return;
 			}
-			let [partNumber, partName] = await findBootPartitionByName(
+			let bootPart = await findBootPartitionByName(
 				partitionInfo,
 				disk,
 				imagePath,
 			);
-			if (partNumber === undefined) {
-				partNumber = await findBootPartitionByContents(
+			if (bootPart == null) {
+				const partNumber = await findBootPartitionByContents(
 					disk,
 					partitionInfo,
 					imagePath,
 				);
-				partName = ''; // linter appeaser ("use const instead of let")
+				bootPart = {
+					index: partNumber,
+					name: '',
+				};
 			}
 
 			// Warn if the partition found does not have a 'config.json' file
-			if (!(await hasFile(disk, partNumber, configJsonPath))) {
-				const details = partName
-					? `"${partName}" (${partNumber})`
-					: `'${partNumber}'`;
+			if (!(await hasFile(disk, bootPart.index, configJsonPath))) {
+				const details = bootPart.name
+					? `"${bootPart.name}" (${bootPart.index})`
+					: `'${bootPart.index}'`;
 				console.error(`\
 [warn] "${imagePath}":
 [warn]   Could not find a previous "${configJsonPath}" file in partition ${details}.
 [warn]   Proceeding anyway, but this is unexpected.`);
 			}
 
-			return partNumber;
+			return bootPart.index;
 		},
 	);
 }
@@ -87,43 +86,17 @@ async function findBootPartitionByName(
 	partitionInfo: GetPartitionsResult,
 	fileDisk: filedisk.FileDisk,
 	imagePath: string,
-): Promise<[number | undefined, string | undefined]> {
+) {
 	const bootNames = ['resin-boot', 'flash-boot', 'balena-boot'];
-	const { partitions } = partitionInfo;
-	const isGPT = (
-		partsInfo: GetPartitionsResult,
-		_parts: Array<GPTPartition | MBRPartition>,
-	): _parts is GPTPartition[] => partsInfo.type === 'gpt';
-
-	if (isGPT(partitionInfo, partitions)) {
-		const bootPart = partitions.find((gptPartInfo: GPTPartition) =>
-			bootNames.includes(gptPartInfo.name),
-		);
-		if (bootPart && typeof bootPart.index === 'number') {
-			return [bootPart.index, bootPart.name];
-		}
-	} else {
-		// MBR
-		for (const partition of partitions) {
-			try {
-				const label = await imagefs.getFsLabel(fileDisk, partition);
-				if (bootNames.includes(label) && typeof partition.index === 'number') {
-					return [partition.index, label];
-				}
-			} catch (e) {
-				// LabelNotFound is expected and not fatal.
-				if (!(e instanceof imagefs.LabelNotFound)) {
-					throw e;
-				}
-			}
-		}
-	}
-	console.error(`\
+	const result = imagefs.findPartition(fileDisk, partitionInfo, bootNames);
+	if (result == null) {
+		console.error(`\
 [warn] "${imagePath}":
-[warn]   Found partition table with ${partitions.length} partitions,
+[warn]   Found partition table with ${partitionInfo.partitions.length} partitions,
 [warn]   but none with a name/label in ['${bootNames.join("', '")}'].
 [warn]   Will scan all partitions for contents.`);
-	return [undefined, undefined];
+	}
+	return result;
 }
 
 async function findBootPartitionByContents(
