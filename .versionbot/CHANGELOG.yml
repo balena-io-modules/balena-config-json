@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update @balena/lint to 9.1.4
+      hash: 0ff1aa1ed8803b622948214493e1f9ec88cfe910
+      body: |
+        Update @balena/lint from 6.2.2 to 9.1.4
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+  version: 4.2.5
+  title: ""
+  date: 2025-03-26T11:41:52.400Z
+- commits:
     - subject: Switch use ts-mocha instead of manually compiling the tests
       hash: c6e46d393d8670781cf9f94512e8ef05a4236111
       body: ""

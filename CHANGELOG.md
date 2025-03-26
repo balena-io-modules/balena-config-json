@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+## 4.2.5 - 2025-03-26
+
+* Update @balena/lint to 9.1.4 [Thodoris Greasidis]
+
 ## 4.2.4 - 2025-03-26
 
 * Switch use ts-mocha instead of manually compiling the tests [Thodoris Greasidis]
