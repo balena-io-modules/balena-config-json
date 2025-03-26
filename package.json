@@ -46,7 +46,7 @@
     "yauzl": "^2.10.0"
   },
   "dependencies": {
-    "balena-image-fs": "^7.4.0",
+    "balena-image-fs": "^7.5.0",
     "file-disk": "^8.0.1",
     "partitioninfo": "^6.0.2"
   },
