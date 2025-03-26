@@ -1,4 +1,4 @@
 module.exports = {
 	reporter: 'spec',
-	spec: 'tests/**/*.spec.js',
+	spec: 'tests/**/*.spec.ts',
 };
