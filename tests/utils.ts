@@ -23,7 +23,7 @@ export async function exists(filePath: string): Promise<boolean> {
 	try {
 		await fs.promises.access(filePath);
 		return true;
-	} catch (e) {
+	} catch {
 		// image file does not exist
 	}
 	return false;
@@ -41,7 +41,7 @@ export async function downloadOS(
 		deviceType,
 	});
 	const onProgress = (state) => {
-		const pct = Math.round(state.percentage || 0);
+		const pct = Math.round(state.percentage ?? 0);
 		if (pct <= lastPct) {
 			return;
 		}
@@ -89,16 +89,17 @@ export async function extractFromZipArchive(
 	await new Promise<void>((resolve, reject) => {
 		yauzl.open(zipArchivePath, { lazyEntries: true }, (error, zipfile) => {
 			if (error || !zipfile) {
-				return reject(
+				reject(
 					new Error(
 						`Unable to open "${zipArchivePath}" as a zip file: ${error}`,
 					),
 				);
+				return;
 			}
 			const $reject = (err: Error) => {
 				try {
 					zipfile.close();
-				} catch (e) {
+				} catch {
 					// ignore
 				}
 				reject(err);
@@ -110,11 +111,12 @@ export async function extractFromZipArchive(
 					if (entries.includes(entry.fileName)) {
 						zipfile.openReadStream(entry, (err, readStream) => {
 							if (err || !readStream) {
-								return $reject(
+								$reject(
 									new Error(
 										`Unable to extract "${entry.fileName}" from zip archive "${zipArchivePath}": ${err}`,
 									),
 								);
+								return;
 							}
 							readStream.on('end', () => {
 								if (++extractCount >= entries.length) {

@@ -43,7 +43,11 @@ export interface ConfigJson {
  * config.read('/dev/disk2', 'raspberry-pi').then (config) ->
  * 	console.log(config)
  */
-export async function read(image: string, _type: string): Promise<ConfigJson> {
+export async function read(
+	image: string,
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars -- TODO: Drop in the next major
+	_type: string,
+): Promise<ConfigJson> {
 	const bootPartNumber = await getBootPartition(image);
 	const file = await imagefs.interact(image, bootPartNumber, async (fs) => {
 		return await promisify(fs.readFile)(configJsonPath, {
@@ -70,10 +74,15 @@ export async function read(image: string, _type: string): Promise<ConfigJson> {
  * .then ->
  * 	console.log('Done!')
  */
-export async function write(image: string, _type: string, config: ConfigJson) {
+export async function write(
+	image: string,
+	// TODO: Drop in the next major
+	_type: string,
+	config: ConfigJson,
+) {
 	const configStr = JSON.stringify(config);
 	const bootPartNumber = await getBootPartition(image);
 	await imagefs.interact(image, bootPartNumber, async (fs) => {
-		return await promisify(fs.writeFile)(configJsonPath, configStr);
+		await promisify(fs.writeFile)(configJsonPath, configStr);
 	});
 }

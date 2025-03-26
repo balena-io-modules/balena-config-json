@@ -71,8 +71,8 @@ describe('balena-config-json', function () {
 				typeof part === 'number'
 					? part
 					: typeof part === 'object'
-					? part.primary
-					: part;
+						? part.primary
+						: part;
 			console.error(
 				`[info] Testing "${slug}" (expected partition number: ${expectedPartNumber})`,
 			);
