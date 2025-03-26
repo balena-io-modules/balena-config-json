@@ -77,7 +77,7 @@ export async function read(
 export async function write(
 	image: string,
 	// TODO: Drop in the next major
-	_type: string,
+	_type: string | undefined,
 	config: ConfigJson,
 ) {
 	const configStr = JSON.stringify(config);
