@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+## 4.2.3 - 2025-03-26
+
+* Update chai to v5 [balena-renovate[bot]]
+
 ## 4.2.2 - 2025-02-24
 
 * Use balena-image-fs getFsLabel() to read filesystem name for MBR [Ken Bannister]
