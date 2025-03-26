@@ -1,4 +1,24 @@
 - commits:
+    - subject: Switch use ts-mocha instead of manually compiling the tests
+      hash: c6e46d393d8670781cf9f94512e8ef05a4236111
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+    - subject: Update TypeScript to 5.8.2
+      hash: b8a8183bc14c24a63f5bc5dd60d8906f6d97a00d
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+  version: 4.2.4
+  title: ""
+  date: 2025-03-26T09:09:13.516Z
+- commits:
     - subject: Update chai to v5
       hash: 7fe83ffc781eb66ac3535749f7fdf56d458eb959
       body: |
