@@ -16,12 +16,12 @@ limitations under the License.
 
 import * as imagefs from 'balena-image-fs';
 import * as filedisk from 'file-disk';
-import {
-	getPartitions,
+import type {
 	GetPartitionsResult,
 	GPTPartition,
 	MBRPartition,
 } from 'partitioninfo';
+import { getPartitions } from 'partitioninfo';
 import { promisify } from 'util';
 
 export const configJsonPath = '/config.json';
@@ -160,7 +160,7 @@ async function hasFile(
 				return stats.isFile();
 			},
 		);
-	} catch (error) {
+	} catch {
 		// Typically one of:
 		// - Error: No such file or directory
 		// - Error: Unsupported filesystem.

@@ -23,17 +23,17 @@
   },
   "scripts": {
     "build": "tsc && npm run readme",
-    "lint": "balena-lint -p tsconfig.dev.json --fix lib tests",
+    "lint": "balena-lint -t tsconfig.dev.json lib tests",
+    "lint-fix": "balena-lint -t tsconfig.dev.json --fix lib tests",
     "pretest": "npm run build",
-    "test": "tsc --noEmit -p tsconfig.dev.json && ts-mocha --project ./tsconfig.dev.json",
-    "posttest": "npm run lint",
+    "test": "tsc --noEmit -p tsconfig.dev.json && ts-mocha --project ./tsconfig.dev.json && npm run lint",
     "prepack": "npm run build",
     "readme": "jsdoc2md --template doc/README.hbs build/config.js > README.md"
   },
   "author": "Balena Inc. (https://balena.io/)",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@balena/lint": "^6.1.1",
+    "@balena/lint": "^9.1.6",
     "@types/chai": "^5.0.0",
     "@types/mocha": "^9.0.0",
     "@types/yauzl": "^2.9.2",
