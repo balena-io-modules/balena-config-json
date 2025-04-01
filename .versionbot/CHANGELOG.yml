@@ -1,4 +1,53 @@
 - commits:
+    - subject: "write: Allow undefined as a value for the deprecated type parameter"
+      hash: 9d5a44175e7f46f2f3963d794d48d3de8f49300f
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+    - subject: Use the balena-image-fs findPartition() helper to find the boot partition
+      hash: 49282ed9bd121d89c8d6fee5095917876cd6f501
+      body: |
+        Update balena-image-fs from 7.4.0 to 7.5.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested:
+        - commits:
+            - subject: Add function to find a partition by name/label
+              hash: 4e9b1cfb2739b738dd12bda7d1623e08ad208b46
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Ken Bannister <kb2ma@runbox.com>
+                signed-off-by: Ken Bannister <kb2ma@runbox.com>
+              author: Ken Bannister
+              nested: []
+          version: balena-image-fs-7.5.0
+          title: ""
+          date: 2025-03-26T12:35:30.365Z
+        - commits:
+            - subject: bump ext2fs to 4.2.4
+              hash: 300cc6d5cdd12ce0c47986efe98702511a03f4a5
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke<ryan@balena.io>
+                signed-off-by: Ryan Cooke<ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+          version: balena-image-fs-7.4.1
+          title: ""
+          date: 2025-02-21T10:21:04.380Z
+  version: 4.2.6
+  title: ""
+  date: 2025-04-01T01:09:16.169Z
+- commits:
     - subject: Update @balena/lint to 9.1.4
       hash: 0ff1aa1ed8803b622948214493e1f9ec88cfe910
       body: |

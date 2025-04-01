@@ -5,6 +5,24 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+## 4.2.6 - 2025-04-01
+
+* write: Allow undefined as a value for the deprecated type parameter [Thodoris Greasidis]
+
+<details>
+<summary> Use the balena-image-fs findPartition() helper to find the boot partition [Thodoris Greasidis] </summary>
+
+> ### balena-image-fs-7.5.0 - 2025-03-26
+> 
+> * Add function to find a partition by name/label [Ken Bannister]
+> 
+> ### balena-image-fs-7.4.1 - 2025-02-21
+> 
+> * bump ext2fs to 4.2.4 [Ryan Cooke]
+> 
+
+</details>
+
 ## 4.2.5 - 2025-03-26
 
 * Update @balena/lint to 9.1.4 [Thodoris Greasidis]

@@ -1,6 +1,6 @@
 {
   "name": "balena-config-json",
-  "version": "4.2.5",
+  "version": "4.2.6",
   "description": "Balena config.json manipulation utilities",
   "main": "build/config.js",
   "homepage": "https://github.com/balena-io-modules/balena-config-json",
@@ -51,6 +51,6 @@
     "partitioninfo": "^6.0.2"
   },
   "versionist": {
-    "publishedAt": "2025-03-26T11:41:52.539Z"
+    "publishedAt": "2025-04-01T01:09:17.160Z"
   }
 }
