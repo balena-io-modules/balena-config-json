@@ -46,7 +46,7 @@ export interface ConfigJson {
 export async function read(
 	image: string,
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars -- TODO: Drop in the next major
-	_type: string,
+	_type?: string,
 ): Promise<ConfigJson> {
 	const bootPartNumber = await getBootPartition(image);
 	const file = await imagefs.interact(image, bootPartNumber, async (fs) => {
@@ -77,7 +77,7 @@ export async function read(
 export async function write(
 	image: string,
 	// TODO: Drop in the next major
-	_type: string,
+	_type: string | undefined,
 	config: ConfigJson,
 ) {
 	const configStr = JSON.stringify(config);
