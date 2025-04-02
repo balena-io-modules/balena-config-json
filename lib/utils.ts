@@ -88,7 +88,11 @@ async function findBootPartitionByName(
 	imagePath: string,
 ) {
 	const bootNames = ['resin-boot', 'flash-boot', 'balena-boot'];
-	const result = imagefs.findPartition(fileDisk, partitionInfo, bootNames);
+	const result = await imagefs.findPartition(
+		fileDisk,
+		partitionInfo,
+		bootNames,
+	);
 	if (result == null) {
 		console.error(`\
 [warn] "${imagePath}":
