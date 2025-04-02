@@ -1,4 +1,17 @@
 - commits:
+    - subject: Fix getBootPartition always warning that the boot partitions were not
+        found
+      hash: d91290d9c4b502652c50a34482ff68448eb0a4c2
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+  version: 4.2.7
+  title: ""
+  date: 2025-04-02T14:14:31.495Z
+- commits:
     - subject: "write: Allow undefined as a value for the deprecated type parameter"
       hash: 9d5a44175e7f46f2f3963d794d48d3de8f49300f
       body: ""

@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.3] - 2018-07-30
 
+## 4.2.7 - 2025-04-02
+
+* Fix getBootPartition always warning that the boot partitions were not found [Thodoris Greasidis]
+
 ## 4.2.6 - 2025-04-01
 
 * write: Allow undefined as a value for the deprecated type parameter [Thodoris Greasidis]
