@@ -33,7 +33,7 @@
   "author": "Balena Inc. (https://balena.io/)",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@balena/lint": "^9.1.6",
+    "@balena/lint": "^11.0.0",
     "@types/chai": "^5.0.0",
     "@types/mocha": "^9.0.0",
     "@types/yauzl": "^2.9.2",
